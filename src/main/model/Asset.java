@@ -26,13 +26,13 @@ public class Asset implements Finances{
     }
 
     @Override
-    // REQUIRES: amount <= 0 && this.value >= amount
+    // REQUIRES: amount >= 0 && this.value >= amount
     // MODIES: this
     // EFFECTS: Subtracts the value of the asset by the amount passed
     public void decreaseValue(double amount) {
         this.value -= amount;
+        //TODO: find a fix for the storing of decimals in computer
     }
-
 
     //Simple setters and getters
     @Override

@@ -1,35 +1,49 @@
 package model;
 
 public class Liability implements Finances{
+    private String name;
+    private double value;
 
+    /*
+     * REQUIRES: liabilityName to be non-zero in length
+     *           & liabilityValue < 0
+     * EFFECTS: the name of the liability is set to liabilityName; the 
+     *          value of the liability is set to liabilityValue
+     */
+    public Liability(String liabilityName, double liabilityValue){
+        this.name = liabilityName;
+        this.value = liabilityValue;
+    }
+
+    @Override
+    // REQUIRES: amount >= 0
+    // MODIES: this
+    // EFFECTS: Subtracts the value of the liability by the amount passed
+    public void increaseValue(double amount) {
+        //stub
+    }
+
+    @Override
+    // REQUIRES: amount >= 0 && |this.value| >= amount
+    // MODIES: this
+    // EFFECTS: Adds the value of the liability by the amount passed
+    public void decreaseValue(double amount) {
+        //stub
+    }
+
+    //Simple setters and getters
     @Override
     public double getValue() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getValue'");
+        return this.value;
     }
 
-    @Override
+    @Override 
     public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
-    }
-
-    @Override
-    public void increaseValue(double amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'increaseValue'");
-    }
-
-    @Override
-    public void decreaseValue(double amount) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'decreaseValue'");
+        return this.name;
     }
 
     @Override
     public void setName(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setName'");
+        this.name = name;
     }
-
 }
