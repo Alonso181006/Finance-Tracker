@@ -20,7 +20,7 @@ public class Liability implements Finances{
     // MODIES: this
     // EFFECTS: Subtracts the value of the liability by the amount passed
     public void increaseValue(double amount) {
-        //stub
+        this.value -= amount;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Liability implements Finances{
     // MODIES: this
     // EFFECTS: Adds the value of the liability by the amount passed
     public void decreaseValue(double amount) {
-        //stub
+        this.value += amount;
     }
 
     //Simple setters and getters
