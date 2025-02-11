@@ -5,12 +5,10 @@ public class Asset implements Finances{
     private String name;
     private double value;
 
-    /*
-     * REQUIRES: assetName to be non-zero in length
-     *           & assetValue > 0
-     * EFFECTS: the name of the asset is set to assetName; the 
-     *          value of the asset is set to assetValue
-     */
+    // REQUIRES: assetName to be non-zero in length
+    //           & assetValue > 0
+    // EFFECTS: the name of the asset is set to assetName; the 
+    //        value of the asset is set to assetValue
     public Asset(String assetName, double assetValue){
         this.name = assetName;
         this.value = assetValue;
