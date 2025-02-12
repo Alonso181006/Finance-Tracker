@@ -8,37 +8,50 @@ public class FinancesList {
 
     // EFFECTS: creates an empty financesList
     public FinancesList(){
-        //stub
+        financesList = new ArrayList<Finances>();
     }
 
     // MODIFIES: this
     // EFFECTS: adds the entry into the list of finances and returns true, 
     //          if it does not create duplicates, else returns false 
     public boolean addFinances(Finances entry){
-        return false;  //stub
+        if (!financesList.contains(entry)) {
+            financesList.add(entry);
+            return true;
+        }
+        return false;
     }
 
     // MODIFIES: this
     // EFFECTS: removes the entry off the list of finances and return true, 
     //          if the entry is part of the list, else return false
     public boolean removeFinances(Finances entry){
-        return false; //stub
+        return financesList.remove(entry);
     }
 
     //getters
     public ArrayList<Asset> getAssets(){
-        //stub
-        return null;
+        ArrayList<Asset> assetList = new ArrayList<Asset>();
+        for (Finances item: this.financesList) {
+            if (item instanceof Asset) {
+                assetList.add((Asset) item);
+            }
+        }
+        return assetList;
     }
 
     public ArrayList<Liability> getLiabilities(){
-        //stub
-        return null;
+        ArrayList<Liability> liabilityList = new ArrayList<Liability>();
+        for (Finances item: this.financesList) {
+            if (item instanceof Liability) {
+                liabilityList.add((Liability) item);
+            }
+        }
+        return liabilityList;
     }
 
     public ArrayList<Finances> getFinances(){
-        //stub
-        return null;
+        return this.financesList;
     } 
 
 }

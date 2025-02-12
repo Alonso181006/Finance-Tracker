@@ -41,9 +41,9 @@ public class TestAsset {
 
     @Test
     public void testDecreaseValueMultipleTimes(){
-        testAsset.decreaseValue(27.5);
-        testAsset.decreaseValue(0.5);
-        assertEquals(2.0, testAsset.getValue());
+        testAsset.decreaseValue(27.54);
+        testAsset.decreaseValue(0.33);
+        assertEquals(2.13, testAsset.getValue(),0.01);
     }
 
 }

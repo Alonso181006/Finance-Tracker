@@ -32,7 +32,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testRemoveFinancesInArray(){
+    void testRemoveFinancesInArrayMiddle(){
         financesList.addFinances(testAsset1);
         testList.add(testAsset1);
         financesList.addFinances(testLiability1);
@@ -41,7 +41,37 @@ public class TestFinancesList {
         testList.add(testLiability2);
         financesList.addFinances(testAsset2);
         testList.add(testAsset2);
-        testList.remove(2);
+        testList.remove(1);
+        assertTrue(financesList.removeFinances(testLiability1));
+        assertEquals(testList, financesList.getFinances());
+    }
+
+    @Test 
+    void testRemoveFinancesInArrayStart(){
+        financesList.addFinances(testAsset1);
+        testList.add(testAsset1);
+        financesList.addFinances(testLiability1);
+        testList.add(testLiability1);
+        financesList.addFinances(testAsset2);
+        testList.add(testAsset2);
+        financesList.addFinances(testLiability2);
+        testList.add(testLiability2);
+        testList.remove(0);
+        assertTrue(financesList.removeFinances(testAsset1));
+        assertEquals(testList, financesList.getFinances());
+    }
+    
+    @Test 
+    void testRemoveFinancesInArrayEnd(){
+        financesList.addFinances(testAsset1);
+        testList.add(testAsset1);
+        financesList.addFinances(testAsset2);
+        testList.add(testAsset2);
+        financesList.addFinances(testLiability2);
+        testList.add(testLiability2);
+        financesList.addFinances(testLiability1);
+        testList.add(testLiability1);
+        testList.remove(3);
         assertTrue(financesList.removeFinances(testLiability1));
         assertEquals(testList, financesList.getFinances());
     }
