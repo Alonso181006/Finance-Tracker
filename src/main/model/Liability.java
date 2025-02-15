@@ -15,18 +15,9 @@ public class Liability implements Finances{
     }
 
     @Override
-    // REQUIRES: amount >= 0
     // MODIES: this
     // EFFECTS: Subtracts the value of the liability by the amount passed
-    public void increaseValue(double amount) {
-        this.value -= amount;
-    }
-
-    @Override
-    // REQUIRES: amount >= 0 && |this.value| >= amount
-    // MODIES: this
-    // EFFECTS: Adds the value of the liability by the amount passed
-    public void decreaseValue(double amount) {
+    public void changeValue(double amount) {
         this.value += amount;
     }
 

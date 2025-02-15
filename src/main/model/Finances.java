@@ -5,7 +5,5 @@ public interface Finances {
     public void setName(String name);
     public double getValue();
     public String getName();
-    public void increaseValue(double amount);
-    public void decreaseValue(double amount);
-
+    public void changeValue(double amount);
 }

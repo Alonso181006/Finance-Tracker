@@ -21,28 +21,28 @@ public class TestAsset {
     
     @Test
     public void testIncreaseValue(){
-        testAsset.increaseValue(45.1);
+        testAsset.changeValue(45.1);
         assertEquals(75.1, testAsset.getValue());
 
     }
 
     @Test 
     public void testDecreaseValue(){
-        testAsset.decreaseValue(29.0);
+        testAsset.changeValue(-29.0);
         assertEquals(1.0, testAsset.getValue());
     }
 
     @Test 
     public void testIncreaseValueMultipleTimes(){
-        testAsset.increaseValue(87.0);
-        testAsset.increaseValue(107.7);
+        testAsset.changeValue(87.0);
+        testAsset.changeValue(107.7);
         assertEquals(224.7, testAsset.getValue());
     }
 
     @Test
     public void testDecreaseValueMultipleTimes(){
-        testAsset.decreaseValue(27.54);
-        testAsset.decreaseValue(0.33);
+        testAsset.changeValue(-27.54);
+        testAsset.changeValue(-0.33);
         assertEquals(2.13, testAsset.getValue(),0.01);
     }
 
