@@ -29,6 +29,13 @@ public class FinancesList {
         return financesList.remove(entry);
     }
 
+    // EFFECTS: compiles the worth of all assets agaisnt(subtraction) liabilities 
+    //          to see a user's total networth
+    public double netWorth(){
+        return 0;
+        //stub
+    } 
+
     //getters
     public ArrayList<Asset> getAssets(){
         ArrayList<Asset> assetList = new ArrayList<Asset>();
