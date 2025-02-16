@@ -25,7 +25,8 @@ public abstract class Finances {
     // EFFECTS: outputs the compound interest of the asset's value based on the percentage passed
     //              an the total wait time in years. The asset compounds once per year.
     public double compoundInterest(int percentage, int years) {
-        return 00;
+        double compoundedValue = getValue() * Math.pow(1 + ((double) percentage / 100), years);
+        return compoundedValue;
     } 
 
     //Simple setters and getters

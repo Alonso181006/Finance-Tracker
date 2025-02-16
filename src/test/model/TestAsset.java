@@ -13,7 +13,6 @@ public class TestAsset {
     void setup(){
         testAsset = new Asset("cash", 30.0);
         testSavings = new Asset("Savings", 3539.00);
-
     }
 
     @Test
@@ -60,15 +59,15 @@ public class TestAsset {
     @Test
     public void testCompound(){
         assertEquals(3539, testSavings.compoundInterest(5, 0));
-        assertEquals(9600.03, testSavings.compoundInterest(5, 20));
-        assertEquals(70641.06, testSavings.compoundInterest(5, 60));
+        assertEquals(9390.02, testSavings.compoundInterest(5, 20), 0.01);
+        assertEquals(66105.64, testSavings.compoundInterest(5, 60), 0.01);
     }
 
     @Test
     public void testCompoundHighestInterest(){
         assertEquals(3539, testSavings.compoundInterest(50, 0));
-        assertEquals(5496150.49, testSavings.compoundInterest(50, 15));
-        assertEquals(20586986235358360.00, testSavings.compoundInterest(50, 60));
+        assertEquals(1549706.48, testSavings.compoundInterest(50, 15), 0.01);
+        assertEquals(130123610789225.97, testSavings.compoundInterest(50, 60), 0.01);
     }
 
 }

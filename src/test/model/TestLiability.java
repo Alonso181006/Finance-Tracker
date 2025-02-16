@@ -59,16 +59,15 @@ public class TestLiability {
     @Test
     public void testCompound(){
         assertEquals(-15039.21, testLoans.compoundInterest(3, 0));
-        assertEquals(-21546.46, testLoans.compoundInterest(3, 12));
-        assertEquals(-90777.78, testLoans.compoundInterest(3, 60));
+        assertEquals(-21442.32, testLoans.compoundInterest(3, 12), 0.01);
+        assertEquals(-88605.06, testLoans.compoundInterest(3, 60), 0.01);
     }
 
     @Test
     public void testCompoundHighestInterest(){
         assertEquals(-15039.21, testLoans.compoundInterest(50, 0));
-        assertEquals(-757158.24, testLoans.compoundInterest(50, 8));
-        assertEquals(-87485733049071550.00, testLoans.compoundInterest(50, 60));
+        assertEquals(-385438.50, testLoans.compoundInterest(50, 8), 0.01);
+        assertEquals(-552968722412386.25, testLoans.compoundInterest(50, 60), 0.01);
     }
-
 
 }
