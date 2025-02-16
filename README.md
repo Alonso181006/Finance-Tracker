@@ -10,7 +10,10 @@ The finance tracker specifically will start off by collecting your data about so
 
 - As a user, I want to be able to ***add and remove*** debts, savings, and chequing balance into a my Assets & Liabilities
 - As a user, I want to be able to ***view a list*** of debts or capital from my Assets & Liabilities 
-- As a user, I want to be able to see how my savings and debts could compound over 10, 15 , 20 , 30 years
+- As a user, I want to be able to see how my assets and debts could compound over 10, 15 , 20 , 30 years
+- As a user, I want to be able to edit my assets and debts in case I got extra cash to invest or pay off loans
+- As a user, I want to see if my assets outweight my liabilities
 
+### Extra
 - As a user, I want to be able create a Monthly budget by adding categories such a Food, Transportation with an alloted  amount of money I can spend for each class.
 - As a user I want to be able to track monthly recurring memberships with date of renewnal.

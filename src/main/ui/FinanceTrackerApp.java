@@ -71,7 +71,7 @@ public class FinanceTrackerApp {
     private void assetsCommands(){
         displayAssetOptions();
         String userInput = input.next();
-        while (!(userInput.equals("a") | userInput.equals("c")  | userInput.equals("t"))) {
+        while (!(userInput.equals("a") | userInput.equals("c")  | userInput.equals("s"))) {
             System.out.println("\nInvalid input, please try again:");
             displayAssetOptions();
             userInput = input.next();
@@ -91,7 +91,7 @@ public class FinanceTrackerApp {
         System.out.println("\nAsset Commands:");
         System.out.println("\ta -> Add Asset");
         System.out.println("\tc -> Modify Asset");
-        System.out.println("\tl -> ...(Savings)");
+        System.out.println("\ts -> ...(Savings)");
     }
 
     // MODIFIES: this 
@@ -155,17 +155,7 @@ public class FinanceTrackerApp {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+    
 
     // EFFECTS: asks the user what details they want to display about the
     //          balance sheet
