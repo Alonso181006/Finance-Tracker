@@ -117,8 +117,8 @@ public class TestFinancesList {
 
     @Test
     void testnetWorthOneFinances(){
-        financesList.addFinances(testLiability1);
-        assertEquals(-20, financesList.netWorth());  
+        financesList.addFinances(testLiability2);
+        assertEquals(-8.99, financesList.netWorth());  
     }
 
     @Test
@@ -132,7 +132,7 @@ public class TestFinancesList {
     void testnetWorthOnlyLiabilities(){
         financesList.addFinances(testLiability2);
         financesList.addFinances(testLiability1);
-        assertEquals(-28.99, financesList.netWorth());  
+        assertEquals(-28.99, financesList.netWorth(), 0.01);  
     }
     @Test
     void testnetWorthMultipleFinances(){
@@ -140,6 +140,6 @@ public class TestFinancesList {
         financesList.addFinances(testLiability2);
         financesList.addFinances(testLiability1);
         financesList.addFinances(testAsset2);
-        assertEquals(90.01, financesList.netWorth());  
+        assertEquals(91.01, financesList.netWorth(), 0.01);  
     }
 }

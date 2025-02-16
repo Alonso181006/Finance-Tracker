@@ -25,7 +25,7 @@ public abstract class Finances {
     // EFFECTS: outputs the compound interest of the asset's value based on the percentage passed
     //          for 5, 10, and 20 years.
     public double compoundInterest(Asset asset, int percentage) {
-        return 0.0;
+        return 0.00;
         //stub
     } 
 

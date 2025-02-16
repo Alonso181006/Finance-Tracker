@@ -32,8 +32,20 @@ public class FinancesList {
     // EFFECTS: compiles the worth of all assets agaisnt(subtraction) liabilities 
     //          to see a user's total networth
     public double netWorth(){
-        return 0;
-        //stub
+        ArrayList<Asset> assetList = getAssets();
+        ArrayList<Liability> liabilityList = getLiabilities();
+        double assetTotal = 0;
+        double liabilityTotal = 0;
+
+        for (Asset asset: assetList){
+            assetTotal += asset.getValue();
+        }
+        for (Liability liability: liabilityList){
+            liabilityTotal += liability.getValue();
+        }
+
+        return assetTotal + liabilityTotal;
+
     } 
 
     //getters
