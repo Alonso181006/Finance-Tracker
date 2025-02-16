@@ -21,12 +21,11 @@ public abstract class Finances {
         this.value += amount;
     }
 
-    // SPECIFIES: percentage > 0 & percentage < 100
+    // SPECIFIES: percentage >= 0 & percentage <= 50 & year >= 0 & year =< 60
     // EFFECTS: outputs the compound interest of the asset's value based on the percentage passed
-    //          for 5, 10, and 20 years.
-    public double compoundInterest(Asset asset, int percentage) {
-        return 0.00;
-        //stub
+    //              an the total wait time in years. The asset compounds once per year.
+    public double compoundInterest(int percentage, int years) {
+        return 00;
     } 
 
     //Simple setters and getters
