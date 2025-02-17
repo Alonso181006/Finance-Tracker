@@ -23,29 +23,29 @@ public class TestLiability {
     
     @Test
     public void testIncreaseValue(){
-        testLiability.changeValue(-27.5);
+        testLiability.addValue(27.5);
         assertEquals(-77.51, testLiability.getValue(), 0.01);
 
     }
 
     @Test 
     public void testDecreaseValue(){
-        testLiability.changeValue(17.0);
+        testLiability.subValue(17.0);
         assertEquals(-33.01, testLiability.getValue(), 0.01);
     }
 
     @Test 
     public void testIncreaseValueMultipleTimes(){
-        testLiability.changeValue(-12.3);
-        testLiability.changeValue(-17.8);
+        testLiability.addValue(12.3);
+        testLiability.addValue(17.8);
         assertEquals(-80.11, testLiability.getValue(), 0.01);
     }
 
     @Test
     public void testDecreaseValueMultipleTimes(){
-        testLiability.changeValue(-0.25);
-        testLiability.changeValue(-49.0);
-        assertEquals(-99.26, testLiability.getValue(), 0.01);
+        testLiability.subValue(0.25);
+        testLiability.subValue(49.0);
+        assertEquals(-0.76, testLiability.getValue(), 0.01);
     }
 
     @Test

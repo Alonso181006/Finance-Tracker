@@ -8,10 +8,10 @@ The finance tracker specifically will start off by collecting your data about so
 
 ## User Stories
 
-- As a user, I want to be able to ***add and remove*** debts, savings, and chequing balance into a my Assets & Liabilities
-- As a user, I want to be able to ***view a list*** of debts or capital from my Assets & Liabilities 
+- As a user, I want to be able to ***add and remove*** Assets and Liabilities into a my Balance Sheet
+- As a user, I want to be able to ***view a list*** of Assets or Liabilities from my Balance Sheet
 - As a user, I want to be able to see how my assets and debts could compound over 10, 15 , 20 , 30 years
-- As a user, I want to be able to edit my assets and debts in case I got extra cash to invest or pay off loans
+- As a user, I want to be able to edit the value of my assets and debts in case I got extra cash to invest or pay off loans
 - As a user, I want to see if my assets outweight my liabilities
 
 ### Extra

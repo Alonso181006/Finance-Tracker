@@ -134,7 +134,6 @@ public class TestFinancesList {
         financesList.addFinances(testLiability1);
         assertEquals(-28.99, financesList.netWorth(), 0.01);  
     }
-    
     @Test
     void testnetWorthMultipleFinances(){
         financesList.addFinances(testAsset1);

@@ -12,8 +12,8 @@ public class FinancesList {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds the entry into the list of finances and returns true, 
-    //          if it does not create duplicates, else returns false 
+    // EFFECTS: if it does not create duplicates adds the entry into the 
+    //          list of finances and returns true, else returns false 
     public boolean addFinances(Finances entry){
         if (!financesList.contains(entry)) {
             financesList.add(entry);
@@ -23,13 +23,13 @@ public class FinancesList {
     }
 
     // MODIFIES: this
-    // EFFECTS: removes the entry off the list of finances and return true, 
-    //          if the entry is part of the list, else return false
+    // EFFECTS: if the entry is not part of the list return false
+    //          else removes the entry off the list of finances and return true,    
     public boolean removeFinances(Finances entry){
         return financesList.remove(entry);
     }
 
-    // EFFECTS: compiles the worth of all assets agaisnt(subtraction) liabilities 
+    // EFFECTS: compiles the worth of all assets agaisnt liabilities 
     //          to see a user's total networth
     public double netWorth(){
         ArrayList<Asset> assetList = getAssets();
