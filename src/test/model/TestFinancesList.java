@@ -26,8 +26,10 @@ public class TestFinancesList {
 
     @Test 
     void testAddFinances(){
-        financesList.addFinances(testAsset1);
+        assertTrue(financesList.addFinances(testAsset1));
         testList.add(testAsset1);
+        assertEquals(testList, financesList.getFinances());
+        assertFalse(financesList.addFinances(testAsset1));
         assertEquals(testList, financesList.getFinances());
     }
 
