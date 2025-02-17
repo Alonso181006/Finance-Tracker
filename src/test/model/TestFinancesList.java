@@ -15,7 +15,7 @@ public class TestFinancesList {
     private Liability testLiability2;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         financesList = new FinancesList();
         testList = new ArrayList<Finances>();
         testAsset1 = new Asset("savings", 100);
@@ -25,7 +25,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testAddFinances(){
+    void testAddFinances() {
         assertTrue(financesList.addFinances(testAsset1));
         testList.add(testAsset1);
         assertEquals(testList, financesList.getFinances());
@@ -34,7 +34,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testRemoveFinancesInArrayMiddle(){
+    void testRemoveFinancesInArrayMiddle() {
         financesList.addFinances(testAsset1);
         testList.add(testAsset1);
         financesList.addFinances(testLiability1);
@@ -49,7 +49,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testRemoveFinancesInArrayStart(){
+    void testRemoveFinancesInArrayStart() {
         financesList.addFinances(testAsset1);
         testList.add(testAsset1);
         financesList.addFinances(testLiability1);
@@ -64,7 +64,7 @@ public class TestFinancesList {
     }
     
     @Test 
-    void testRemoveFinancesInArrayEnd(){
+    void testRemoveFinancesInArrayEnd() {
         financesList.addFinances(testAsset1);
         testList.add(testAsset1);
         financesList.addFinances(testAsset2);
@@ -79,7 +79,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testRemoveFinancesNotInArray(){
+    void testRemoveFinancesNotInArray() {
         financesList.addFinances(testAsset1);
         testList.add(testAsset1);
         financesList.addFinances(testLiability1);
@@ -91,7 +91,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testgetAssets(){
+    void testgetAssets() {
         financesList.addFinances(testAsset1);
         testList.add(testAsset1);
         financesList.addFinances(testLiability1);
@@ -102,7 +102,7 @@ public class TestFinancesList {
     }
 
     @Test 
-    void testgetLiabilities(){
+    void testgetLiabilities() {
         financesList.addFinances(testAsset1);
         financesList.addFinances(testLiability2);
         testList.add(testLiability2);
@@ -113,31 +113,32 @@ public class TestFinancesList {
     }
 
     @Test
-    void testnetWorthEmptyList(){
+    void testnetWorthEmptyList() {
         assertEquals(0, financesList.netWorth());  
     }
 
     @Test
-    void testnetWorthOneFinances(){
+    void testnetWorthOneFinances() {
         financesList.addFinances(testLiability2);
         assertEquals(-8.99, financesList.netWorth());  
     }
 
     @Test
-    void testnetWorthOnlyAssets(){
+    void testnetWorthOnlyAssets() {
         financesList.addFinances(testAsset1);
         financesList.addFinances(testAsset2);
         assertEquals(120, financesList.netWorth());  
     }
 
     @Test
-    void testnetWorthOnlyLiabilities(){
+    void testnetWorthOnlyLiabilities() {
         financesList.addFinances(testLiability2);
         financesList.addFinances(testLiability1);
         assertEquals(-28.99, financesList.netWorth(), 0.01);  
     }
+    
     @Test
-    void testnetWorthMultipleFinances(){
+    void testnetWorthMultipleFinances() {
         financesList.addFinances(testAsset1);
         financesList.addFinances(testLiability2);
         financesList.addFinances(testLiability1);

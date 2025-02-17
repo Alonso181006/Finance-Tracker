@@ -7,14 +7,14 @@ public class FinancesList {
     ArrayList<Finances> financesList;
 
     // EFFECTS: creates an empty financesList
-    public FinancesList(){
+    public FinancesList() {
         financesList = new ArrayList<Finances>();
     }
 
     // MODIFIES: this
     // EFFECTS: if it does not create duplicates adds the entry into the 
     //          list of finances and returns true, else returns false 
-    public boolean addFinances(Finances entry){
+    public boolean addFinances(Finances entry) {
         if (!financesList.contains(entry)) {
             financesList.add(entry);
             return true;
@@ -25,22 +25,22 @@ public class FinancesList {
     // MODIFIES: this
     // EFFECTS: if the entry is not part of the list return false
     //          else removes the entry off the list of finances and return true,    
-    public boolean removeFinances(Finances entry){
+    public boolean removeFinances(Finances entry) {
         return financesList.remove(entry);
     }
 
     // EFFECTS: compiles the worth of all assets agaisnt liabilities 
     //          to see a user's total networth
-    public double netWorth(){
+    public double netWorth() {
         ArrayList<Asset> assetList = getAssets();
         ArrayList<Liability> liabilityList = getLiabilities();
         double assetTotal = 0;
         double liabilityTotal = 0;
 
-        for (Asset asset: assetList){
+        for (Asset asset: assetList) {
             assetTotal += asset.getValue();
         }
-        for (Liability liability: liabilityList){
+        for (Liability liability: liabilityList) {
             liabilityTotal += liability.getValue();
         }
 
@@ -48,8 +48,8 @@ public class FinancesList {
 
     } 
 
-    //getters
-    public ArrayList<Asset> getAssets(){
+    // Getters
+    public ArrayList<Asset> getAssets() {
         ArrayList<Asset> assetList = new ArrayList<Asset>();
         for (Finances item: this.financesList) {
             if (item instanceof Asset) {
@@ -59,7 +59,7 @@ public class FinancesList {
         return assetList;
     }
 
-    public ArrayList<Liability> getLiabilities(){
+    public ArrayList<Liability> getLiabilities() {
         ArrayList<Liability> liabilityList = new ArrayList<Liability>();
         for (Finances item: this.financesList) {
             if (item instanceof Liability) {
@@ -69,7 +69,7 @@ public class FinancesList {
         return liabilityList;
     }
 
-    public ArrayList<Finances> getFinances(){
+    public ArrayList<Finances> getFinances() {
         return this.financesList;
     } 
 

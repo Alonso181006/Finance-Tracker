@@ -8,11 +8,15 @@ import model.Finances;
 import model.FinancesList;
 import model.Liability;
 
+// Source: CPSC 210 Teller App 
+//         Console UI inspired by the TellerApp Class
+
+// Finance Tracker Application
 public class FinanceTrackerApp {
     private FinancesList balanceSheet;
     private Scanner input;
     
-    // EFFECTS: runs the Finance Tracker applications
+    // EFFECTS: runs the Finance Tracker application
     public FinanceTrackerApp() {
         runTracker();
     }
@@ -22,7 +26,6 @@ public class FinanceTrackerApp {
     private void runTracker() {
         boolean continueProgram = true;
         String userInput = null;
-
         init();
 
         while (continueProgram) {
@@ -46,7 +49,7 @@ public class FinanceTrackerApp {
 
     // MODIFIES: this
     // EFFECTS: initializes the user's balance sheet
-    private void init(){
+    private void init() {
         balanceSheet = new FinancesList();
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");
@@ -63,7 +66,7 @@ public class FinanceTrackerApp {
 
     // EFFECTS: asks the user what details they want to display about the
     //          balance sheet
-    private void balanceSheetOptions(){
+    private void balanceSheetOptions() {
         displayDetailsOptions();
         String userInput = input.next();
         while (!userInput.matches("bs|a|l|n")) {
@@ -75,7 +78,7 @@ public class FinanceTrackerApp {
             printFinances(balanceSheet.getFinances());
         } else if (userInput.equals("a")) {
             printAssets(balanceSheet.getAssets());
-        } else if (userInput.equals("l")){
+        } else if (userInput.equals("l")) {
             printLiabilities(balanceSheet.getLiabilities());
         } else {
             printNetworth();
@@ -83,7 +86,7 @@ public class FinanceTrackerApp {
     }
 
     // EFFECTS: displays the options for printing the balance sheet details
-    private void displayDetailsOptions(){ 
+    private void displayDetailsOptions() { 
         System.out.println("\nWhat would you like to view:");
         System.out.println("\tbs -> View the Balance Sheet");
         System.out.println("\ta -> View only Assets");
@@ -116,8 +119,7 @@ public class FinanceTrackerApp {
     }
 
     //EFFECTS: displays a list of the networth of the indiviual
-    private void printNetworth(){
+    private void printNetworth() {
         System.out.printf("\nNetworth: $%.2f\n", balanceSheet.netWorth());
     }
-
 }

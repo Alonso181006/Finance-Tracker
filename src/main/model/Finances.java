@@ -1,15 +1,15 @@
 package model;
 
-// Abstract class for a user's finances, such as liabilities and assets.
+// Abstract class for a user's finances, such as liabilities and assets,
+// that have a name and value (in CAD).
 public abstract class Finances {
     protected String name;
     protected double value;
 
-    
     // REQUIRES: financesName to be non-zero in length
     // EFFECTS: the name of the finances is set to financesName; the 
     //          value of the finances is set to financesValue
-    public Finances(String financesName, double financesValue){
+    public Finances(String financesName, double financesValue) {
         this.name = financesName;
         this.value = financesValue;
     }
@@ -34,7 +34,7 @@ public abstract class Finances {
         return compoundedValue;
     } 
 
-    //Simple getters
+    // Simple getters
     public double getValue() {
         return this.value;
     }
