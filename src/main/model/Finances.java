@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Abstract class for a user's finances, such as liabilities and assets,
 // that have a name and value (in CAD).
-public abstract class Finances {
+public abstract class Finances implements Writable{
     protected String name;
     protected double value;
 
@@ -32,6 +36,12 @@ public abstract class Finances {
     public double compoundInterest(int interest, int years) {
         double compoundedValue = getValue() * Math.pow(1 + ((double) interest / 100), years);
         return compoundedValue;
+    } 
+
+    @Override
+    public JSONObject toJson() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
     } 
 
     // Simple getters

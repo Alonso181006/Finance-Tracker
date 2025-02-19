@@ -2,8 +2,12 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 //List of all the Assets and Liabilities of the User 
-public class FinancesList {
+public class FinancesList implements Writable{
     ArrayList<Finances> financesList;
 
     // EFFECTS: creates an empty financesList
@@ -48,6 +52,12 @@ public class FinancesList {
 
     } 
 
+    @Override
+    public JSONObject toJson() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+    } 
+
     // Getters
     public ArrayList<Asset> getAssets() {
         ArrayList<Asset> assetList = new ArrayList<Asset>();
@@ -71,6 +81,6 @@ public class FinancesList {
 
     public ArrayList<Finances> getFinances() {
         return this.financesList;
-    } 
+    }
 
 }
