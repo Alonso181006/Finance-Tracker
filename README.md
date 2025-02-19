@@ -13,8 +13,8 @@ The finance tracker specifically will start off by collecting your data about so
 - As a user, I want to be able to see how my assets and debts could compound over 10, 15, 20, or 30 years
 - As a user, I want to be able to edit the value of my assets and debts in case I got extra cash to invest or pay off loans
 - As a user, I want to see if my assets outweight my liabilities
-- As a user, I want to save my Finance tracker under a username and password (if I so choose)
-- As a user, I want to be able to load up my Finance Tracker based on my username and password from file( if I so choose)
+- As a user, I want to save my Finance tracker under a username (if I so choose)
+- As a user, I want to be able to load up my Finance Tracker based on my username from file( if I so choose)
 
 ### Extra
 - As a user, I want to be able create a Monthly budget by adding categories such a Food, Transportation with an alloted  amount of money I can spend for each class.
