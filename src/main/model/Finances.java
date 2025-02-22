@@ -38,7 +38,7 @@ public abstract class Finances implements Writable{
         return compoundedValue;
     } 
 
-    @Override
+    //EFFECTS: returns finances as a JSON object 
     public JSONObject toJson() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toJson'");

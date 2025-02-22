@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -68,6 +69,14 @@ public class TestLiability {
         assertEquals(-15039.21, testLoans.compoundInterest(50, 0));
         assertEquals(-385438.50, testLoans.compoundInterest(50, 8), 0.01);
         assertEquals(-552968722412386.25, testLoans.compoundInterest(50, 60), 0.01);
+    }
+
+    @Test
+    public void testToJson(){
+        JSONObject testJson = new JSONObject();
+        testJson.put("name", "car loan");
+        testJson.put("value", -50.01);
+        assertEquals(testJson, testLiability.toJson());
     }
 
 }

@@ -52,7 +52,7 @@ public class FinancesList implements Writable{
 
     } 
 
-    @Override
+    //EFFECTS: returns Finances in this list as a JSON array
     public JSONObject toJson() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toJson'");
