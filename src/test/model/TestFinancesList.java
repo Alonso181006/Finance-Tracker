@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +18,7 @@ public class TestFinancesList {
 
     @BeforeEach
     void setup() {
-        financesList = new FinancesList();
+        financesList = new FinancesList("Alonso");
         testList = new ArrayList<Finances>();
         testAsset1 = new Asset("savings", 100);
         testAsset2 = new Asset("cash", 20);
@@ -144,5 +146,21 @@ public class TestFinancesList {
         financesList.addFinances(testLiability1);
         financesList.addFinances(testAsset2);
         assertEquals(91.01, financesList.netWorth(), 0.01);  
+    }
+
+    @Test
+    void testToJson(){
+        financesList.addFinances(testAsset1);
+        financesList.addFinances(testLiability2); 
+        financesList.addFinances(testAsset2);
+        JSONArray testJsonArray = new JSONArray();
+        testJsonArray.put(testAsset1.toJson());
+        testJsonArray.put(testLiability2.toJson());
+        testJsonArray.put(testAsset2.toJson());
+        JSONObject testJson = new JSONObject();
+        testJson.put("User", "Alonso");
+        testJson.put("FinancesList", testJsonArray);
+        assertEquals(testJson.toString(), financesList.toJson().toString());
+        // TODO: do we need to break up the code and put comments for readability
     }
 }

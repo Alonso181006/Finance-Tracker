@@ -50,7 +50,7 @@ public class FinanceTrackerApp {
     // MODIFIES: this
     // EFFECTS: initializes the user's balance sheet
     private void init() {
-        balanceSheet = new FinancesList();
+        balanceSheet = new FinancesList("Alonso");
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");
     }
