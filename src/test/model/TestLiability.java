@@ -76,7 +76,9 @@ public class TestLiability {
         JSONObject testJson = new JSONObject();
         testJson.put("name", "car loan");
         testJson.put("value", -50.01);
-        assertEquals(testJson, testLiability.toJson());
+        assertEquals(testJson.toString(), testLiability.toJson().toString());
+        // TODO: Is this sloppy code, should I impore a JSON library or 
+        //       overide equals() and hashCode() 
     }
 
 }

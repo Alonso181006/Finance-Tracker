@@ -40,8 +40,10 @@ public abstract class Finances implements Writable{
 
     //EFFECTS: returns finances as a JSON object 
     public JSONObject toJson() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'toJson'");
+        JSONObject json = new JSONObject();
+        json.put("name", this.name);
+        json.put("value", this.value);
+        return json;
     } 
 
     // Simple getters
