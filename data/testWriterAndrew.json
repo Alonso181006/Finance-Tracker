@@ -1,0 +1,13 @@
+{
+    "FinancesList": [
+        {
+            "name" : "cash",
+            "value": 25.27
+        }, 
+        {
+            "name" : "student loans",
+            "value": -120.0
+        }
+    ],
+    "user": "Andrew"
+}
