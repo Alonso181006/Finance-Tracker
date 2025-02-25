@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import model.Asset;
 import model.Finances;
-import model.FinancesList;
+import model.UserFinancesList;
 import model.Liability;
 
 // Source: CPSC 210 Teller App 
@@ -13,7 +13,7 @@ import model.Liability;
 
 // Finance Tracker Application
 public class FinanceTrackerApp {
-    private FinancesList balanceSheet;
+    private UserFinancesList balanceSheet;
     private Scanner input;
     
     // EFFECTS: runs the Finance Tracker application
@@ -50,7 +50,7 @@ public class FinanceTrackerApp {
     // MODIFIES: this
     // EFFECTS: initializes the user's balance sheet
     private void init() {
-        balanceSheet = new FinancesList("Alonso");
+        balanceSheet = new UserFinancesList("Alonso");
         input = new Scanner(System.in);
         input.useDelimiter("\r?\n|\r");
     }

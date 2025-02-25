@@ -2,15 +2,15 @@ package ui;
 
 import java.util.Scanner;
 import model.Asset;
-import model.FinancesList;
+import model.UserFinancesList;
 
 // Commands for Assets
 public class AssetCommands {
     private Scanner input;
-    private FinancesList balanceSheet;
+    private UserFinancesList balanceSheet;
 
     // EFFECTS: runs the Asset Commands
-    public AssetCommands(FinancesList balanceSheet) {
+    public AssetCommands(UserFinancesList balanceSheet) {
         init();
         this.balanceSheet = balanceSheet;
         runCommands();

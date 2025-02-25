@@ -8,14 +8,14 @@ import persistence.JsonWriter;
 public class TestJsonWriter {
     JsonWriter testWriter1;
     JsonWriter testWriter2;
-    FinancesList testFList;
+    UserFinancesList testFList;
 
 
     @BeforeEach
     void setup(){
         testWriter1 = new JsonWriter("./data/testWriterNoUser.json");
         testWriter2 = new JsonWriter("./data/testWriterAndrew.json");
-        testFList = new FinancesList("Andrew");
+        testFList = new UserFinancesList("Andrew");
         testFList.addFinances(new Asset("cash", 25.27));
         testFList.addFinances(new Liability("student loans", -120.0));
     }

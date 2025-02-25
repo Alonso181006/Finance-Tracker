@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFinancesList {
-    private FinancesList financesList;
+    private UserFinancesList financesList;
     private ArrayList<Finances> testList;
     private Asset testAsset1;
     private Asset testAsset2;
@@ -18,7 +18,7 @@ public class TestFinancesList {
 
     @BeforeEach
     void setup() {
-        financesList = new FinancesList("Alonso");
+        financesList = new UserFinancesList("Alonso");
         testList = new ArrayList<Finances>();
         testAsset1 = new Asset("savings", 100);
         testAsset2 = new Asset("cash", 20);

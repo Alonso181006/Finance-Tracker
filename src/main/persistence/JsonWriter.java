@@ -1,24 +1,24 @@
 package persistence;
 
-import model.FinancesList;
+import model.UserFinancesList;
 
 // A writer that turns the financesList into a JSON and then add to file
 public class JsonWriter {
 
     //EFFFECTS: constructs the writer with a end destination
-    public JsonWriter(String destination) {
+    public JsonWriter(String file) {
         //stub
     }
 
     // MODIFIES: this
     // EFFECTS: created a new writer based on destination
-    public void createWriter(){
+    public void createWriter() {
         //stub
     }
 
     // MODIFIES: this
     // EFFECTS: writes the JSON representation of the financesList to destination
-    public void write(FinancesList fList) {
+    public void write(UserFinancesList fList) {
         //stub
     }
 

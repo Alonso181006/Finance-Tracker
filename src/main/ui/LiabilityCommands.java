@@ -1,16 +1,16 @@
 package ui;
 
 import java.util.Scanner;
-import model.FinancesList;
+import model.UserFinancesList;
 import model.Liability;
 
 // Commands for Liabilities
 public class LiabilityCommands {
     private Scanner input;
-    private FinancesList balanceSheet;
+    private UserFinancesList balanceSheet;
 
     // EFFECTS: runs the Liability commands
-    public LiabilityCommands(FinancesList balanceSheet) {
+    public LiabilityCommands(UserFinancesList balanceSheet) {
         init();
         this.balanceSheet = balanceSheet;
         runCommands();

@@ -8,12 +8,12 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 //List of all the Assets and Liabilities of the User 
-public class FinancesList implements Writable{
+public class UserFinancesList implements Writable{
     ArrayList<Finances> financesList;
     String user;
 
     // EFFECTS: creates an empty financesList
-    public FinancesList(String user) {
+    public UserFinancesList(String user) {
         financesList = new ArrayList<Finances>();
         this.user = user;
     }
