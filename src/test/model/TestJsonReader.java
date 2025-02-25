@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import persistence.JsonReader;
 
 public class TestJsonReader extends TestJson{
+    JsonReader testInvalidReader;
     JsonReader testReader1;
     JsonReader testReader2;
     UserFinancesList testFList;
@@ -18,6 +19,7 @@ public class TestJsonReader extends TestJson{
 
     @BeforeEach
     void setup(){
+        testInvalidReader = new JsonReader("./data/testNonExistent.json");
         testReader1 = new JsonReader("./data/testReaderNoUser.json");
         testReader2 = new JsonReader("./data/testReaderAndrew.json");
         testFList = new UserFinancesList("Andrew");
@@ -25,8 +27,17 @@ public class TestJsonReader extends TestJson{
         testFList.addFinances(new Liability("student loans", -120.0));
     }
 
+    void testReaderInvalidFile(){
+        try { 
+            UserFinancesList fList = testInvalidReader.read();
+            fail("IOExveption expected");
+        } catch (IOException e) {
+            //pass
+        }
+    }
+
     @Test
-    public void testNoUserDataReader(){
+    public void testReaderNoUserData(){
         try {
             UserFinancesList fList = testReader1.read();
             assertEquals("User 1", fList.getUser());
@@ -37,7 +48,7 @@ public class TestJsonReader extends TestJson{
     }
 
     @Test
-    public void onTopofUserData(){
+    public void testReaderUserData(){
         try {
             UserFinancesList fList = testReader2.read();
             assertEquals("Andrew", fList.getUser());
