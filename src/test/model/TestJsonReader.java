@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import persistence.JsonReader;
 
@@ -27,7 +27,8 @@ public class TestJsonReader extends TestJson{
         testFList.addFinances(new Liability("student loans", -120.0));
     }
 
-    void testReaderInvalidFile(){
+    @Test
+    public void testReaderInvalidFile(){
         try { 
             UserFinancesList fList = testInvalidReader.read();
             fail("IOExveption expected");
@@ -40,7 +41,7 @@ public class TestJsonReader extends TestJson{
     public void testReaderNoUserData(){
         try {
             UserFinancesList fList = testReader1.read();
-            assertEquals("User 1", fList.getUser());
+            assertEquals("User1", fList.getUser());
             assertEquals(0, fList.getFinances().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
