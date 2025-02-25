@@ -1,40 +1,70 @@
 package model;
 
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import persistence.JsonReader;
 import persistence.JsonWriter;
 
 public class TestJsonWriter {
-    JsonWriter testWriter1;
-    JsonWriter testWriter2;
+    JsonWriter testWriter;
+    JsonReader testReader;
     UserFinancesList testFList;
 
 
     @BeforeEach
     void setup(){
-        testWriter1 = new JsonWriter("./data/testWriterNoUser.json");
-        testWriter2 = new JsonWriter("./data/testWriterAndrew.json");
         testFList = new UserFinancesList("Andrew");
         testFList.addFinances(new Asset("cash", 25.27));
         testFList.addFinances(new Liability("student loans", -120.0));
     }
 
     @Test
-    public void noUser(){
-        testWriter1.createWriter();
-        testWriter1.write(testFList);
-        testWriter2.closeWriter();
+    void testWriterInvalidFile() {
+        try {
+            testWriter = new JsonWriter("./data/notValid.json");
+            testWriter.createWriter();
+            fail("IOException was expected");
+        } catch (IOException e) {
+            // pass
+        }
     }
 
     @Test
-    public void onTopofUserData(){
-        testFList.addFinances(new Asset("lottery", 1000.13));
-        testFList.addFinances(new Liability("medical bills", -10330.21));
-        testWriter2.createWriter();
-        testWriter2.write(testFList);
-        testWriter2.closeWriter();
-        
-        
+    public void WritenoUserData(){
+        try {
+            testWriter = new JsonWriter("./data/testWriterNoUser.json");
+            testReader = new JsonReader("./data/testWriterNoUser.json");
+            testWriter.createWriter();
+            testWriter.write(testFList);
+            testWriter.closeWriter();
+
+            UserFinancesList fList = testReader.read();
+            assertEquals(testFList, fList);
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }    
+    }
+
+    @Test
+    public void WriteonTopofUserData(){
+        try {
+            testWriter = new JsonWriter("./data/testWriterAndrew.json");
+            testReader = new JsonReader("./data/testWriterAndrew.json");
+            testFList.addFinances(new Asset("lottery", 1000.13));
+            testFList.addFinances(new Liability("medical bills", -10330.21));
+            testWriter.createWriter();
+            testWriter.write(testFList);
+            testWriter.closeWriter();
+
+            UserFinancesList fList = testReader.read();
+            assertEquals(testFList, fList);
+        } catch (IOException e) {
+            fail("exception should not have been thrown");
+        }        
     }
 }

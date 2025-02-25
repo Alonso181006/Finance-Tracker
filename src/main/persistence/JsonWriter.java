@@ -1,5 +1,7 @@
 package persistence;
 
+import java.io.FileNotFoundException;
+
 import model.UserFinancesList;
 
 // A writer that turns the financesList into a JSON and then add to file
@@ -18,7 +20,7 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes the JSON representation of the financesList to destination
-    public void write(UserFinancesList fList) {
+    public void write(UserFinancesList fList) throws FileNotFoundException {
         //stub
     }
 
