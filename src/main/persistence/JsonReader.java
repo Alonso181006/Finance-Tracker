@@ -14,6 +14,7 @@ import model.Asset;
 import model.Liability;
 import model.UserFinancesList;
 
+// TODO: how do I cite the file JsonSerializationDemo
 // A reader of the JSON data stored in the file and translates it to a financesList 
 public class JsonReader {
     private String source;
@@ -44,7 +45,7 @@ public class JsonReader {
 
     // EFFECTS: parses UserFinancesList from JSON object and returns it
     private UserFinancesList parseFinancesList(JSONObject jsonObject) {
-        String name = jsonObject.getString("user");
+        String name = jsonObject.getString("User");
         UserFinancesList fList = new UserFinancesList(name);
         addFinances(fList, jsonObject);
         return fList;

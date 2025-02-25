@@ -46,6 +46,8 @@ public abstract class Finances implements Writable{
         return json;
     } 
 
+    // TODO: Override equals and hashCode
+
     // Simple getters
     public double getValue() {
         return this.value;

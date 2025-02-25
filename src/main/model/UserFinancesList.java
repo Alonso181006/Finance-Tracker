@@ -71,6 +71,8 @@ public class UserFinancesList implements Writable{
         return jsonArray;
     }
 
+    // TODO: Override equals and hashcode
+
     // Getters
     public ArrayList<Asset> getAssets() {
         ArrayList<Asset> assetList = new ArrayList<Asset>();

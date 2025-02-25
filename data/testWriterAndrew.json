@@ -1,0 +1,21 @@
+{
+    "User": "Andrew",
+    "FinancesList": [
+        {
+            "name": "cash",
+            "value": 25.27
+        },
+        {
+            "name": "student loans",
+            "value": -120
+        },
+        {
+            "name": "lottery",
+            "value": 1000.13
+        },
+        {
+            "name": "medical bills",
+            "value": -10330.21
+        }
+    ]
+}
