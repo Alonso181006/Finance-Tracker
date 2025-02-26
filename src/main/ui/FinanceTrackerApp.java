@@ -18,8 +18,48 @@ public class FinanceTrackerApp {
     
     // EFFECTS: runs the Finance Tracker application
     public FinanceTrackerApp() {
+        setupTracker();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets up the user with an account
+    private void setupTracker() {
+        String userInput = null;
+        init();
+
+        while(balanceSheet == null) {
+            displayUserOptions();
+            userInput = input.next();
+
+            if (userInput.equals("s")) {
+                // findUserInfo();
+            } else if (userInput.equals("c")) {
+                // createUserInfo();
+            } else {
+                System.out.println("\nInvalid input, please try again:");
+            }
+
+        }
         runTracker();
     }
+
+    // EFFECTS: displays user Options
+    private void displayUserOptions() {
+        System.out.println("\nSign in or Create a New User?");
+        System.out.println("\ts -> Sign in");
+        System.out.println("\tc -> Create User");
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initializes the user's balance sheet as null;
+    //          and creates new scanner
+    private void init() {
+        balanceSheet = null;
+        input = new Scanner(System.in);
+        input.useDelimiter("\r?\n|\r");
+    }
+
+
 
     // MODIFIES: this 
     // EFFECTS: processes user input
@@ -27,6 +67,8 @@ public class FinanceTrackerApp {
         boolean continueProgram = true;
         String userInput = null;
         init();
+
+
 
         while (continueProgram) {
             displayOptions();
@@ -47,13 +89,6 @@ public class FinanceTrackerApp {
         System.out.println("Remember it is thrifty to prepare today for the wants of tomorrow");
     }
 
-    // MODIFIES: this
-    // EFFECTS: initializes the user's balance sheet
-    private void init() {
-        balanceSheet = new UserFinancesList("Alonso");
-        input = new Scanner(System.in);
-        input.useDelimiter("\r?\n|\r");
-    }
 
     // EFFECTS: displays options to user
     private void displayOptions() {
