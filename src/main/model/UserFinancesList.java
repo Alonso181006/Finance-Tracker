@@ -77,8 +77,7 @@ public class UserFinancesList implements Writable {
         
         boolean sameName = user.equals(userFList.getUser());
         boolean sameList = financesList.equals(userFList.getFinances());
-
-        return sameName && sameList;
+        return sameName & sameList;
     }
 
     @Override

@@ -56,7 +56,6 @@ public class TestJsonReader extends TestJson {
             assertEquals(2, fnList.getFinances().size());
             checkFinance("cash", 25.27, fnList.getFinances().get(0));
             checkFinance("student loans", -120.0, fnList.getFinances().get(1));
-            
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

@@ -44,7 +44,8 @@ public class TestJsonWriter {
 
             testReader = new JsonReader("./data/testWriterNoUser.json");
             UserFinancesList fnList = testReader.read();
-            testFList.equals(fnList);
+            assertTrue(testFList.equals(fnList));
+            assertTrue(testFList.hashCode() == fnList.hashCode());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }    
@@ -63,6 +64,7 @@ public class TestJsonWriter {
             testReader = new JsonReader("./data/testWriterAndrew.json");
             UserFinancesList fnList = testReader.read();
             assertTrue(testFList.equals(fnList));
+            assertTrue(testFList.hashCode() == fnList.hashCode());
         } catch (IOException e) {
             fail("exception should not have been thrown");
         }        
