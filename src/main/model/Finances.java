@@ -6,7 +6,7 @@ import persistence.Writable;
 
 // Abstract class for a user's finances, such as liabilities and assets,
 // that have a name and value (in CAD).
-public abstract class Finances implements Writable{
+public abstract class Finances implements Writable {
     protected String name;
     protected double value;
 
@@ -44,9 +44,23 @@ public abstract class Finances implements Writable{
         json.put("name", this.name);
         json.put("value", this.value);
         return json;
-    } 
+    }
 
-    // TODO: Override equals and hashCode
+    @Override
+    public boolean equals(Object obj) {
+        Finances finance = (Finances) obj;
+
+        boolean sameName = name.equals(finance.getName());
+        boolean sameVal = value == finance.getValue();
+
+        return sameName & sameVal;
+    }
+
+    @Override
+    public int hashCode() {
+        int val = (int) Math.round(this.value);
+        return name.hashCode() * val;
+    }
 
     // Simple getters
     public double getValue() {

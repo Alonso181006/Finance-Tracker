@@ -1,11 +1,16 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Asset;
 import model.Finances;
 import model.UserFinancesList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import model.Liability;
 
 // Source: CPSC 210 Teller App 
@@ -15,6 +20,11 @@ import model.Liability;
 public class FinanceTrackerApp {
     private UserFinancesList balanceSheet;
     private Scanner input;
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter;
+    private String userInput;
+    private String jsonStore;
+
     
     // EFFECTS: runs the Finance Tracker application
     public FinanceTrackerApp() {
@@ -24,17 +34,16 @@ public class FinanceTrackerApp {
     // MODIFIES: this
     // EFFECTS: sets up the user with an account
     private void setupTracker() {
-        String userInput = null;
         init();
 
-        while(balanceSheet == null) {
+        while (balanceSheet == null) {
             displayUserOptions();
             userInput = input.next();
 
             if (userInput.equals("s")) {
-                // findUserInfo();
+                findUserInfo();
             } else if (userInput.equals("c")) {
-                // createUserInfo();
+                createUserInfo();
             } else {
                 System.out.println("\nInvalid input, please try again:");
             }
@@ -42,6 +51,33 @@ public class FinanceTrackerApp {
         }
         runTracker();
     }
+
+    // MODIFIES: this
+    // EFFECTS: finds the user within the saved json files
+    private void findUserInfo(){
+        System.out.println("\n What is your Username?");
+        userInput = input.next();
+        jsonStore = "./data/" + userInput + ".json";
+
+        try {
+            jsonReader = new JsonReader(jsonStore);
+            balanceSheet = jsonReader.read();
+            System.out.println("Loaded " + balanceSheet.getUser() + " from " + jsonStore);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + jsonStore);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: creates a new User with associated json file
+    private void createUserInfo(){
+        System.out.println("\n What is your Username?");
+        userInput = input.next();
+        jsonStore = "./data/" + userInput + ".json";
+
+        balanceSheet = new UserFinancesList(userInput);
+    }
+
 
     // EFFECTS: displays user Options
     private void displayUserOptions() {
@@ -65,10 +101,6 @@ public class FinanceTrackerApp {
     // EFFECTS: processes user input
     private void runTracker() {
         boolean continueProgram = true;
-        String userInput = null;
-        init();
-
-
 
         while (continueProgram) {
             displayOptions();
@@ -76,6 +108,7 @@ public class FinanceTrackerApp {
 
             if (userInput.equals("q")) {
                 continueProgram = false;
+                quitProgram();
             } else if (userInput.equals("a")) {
                 new AssetCommands(balanceSheet);
             } else if (userInput.equals("l")) {
@@ -86,7 +119,7 @@ public class FinanceTrackerApp {
                 System.out.println("\nInvalid input, please try again:");
             }
         }
-        System.out.println("Remember it is thrifty to prepare today for the wants of tomorrow");
+        System.out.println("Closing App");
     }
 
 
@@ -97,6 +130,42 @@ public class FinanceTrackerApp {
         System.out.println("\tl -> Liability");
         System.out.println("\tb -> Balance Sheet Details");
         System.out.println("\tq -> quit");
+    }
+
+    // EFFECTS: gives the user the option to save their username
+    private void quitProgram(){
+        endScreenOptions();
+        userInput = input.next();
+
+        while (!userInput.matches("y|n")) {
+            System.out.println("\nInvalid input, please try again:");
+            endScreenOptions();
+            userInput = input.next();
+        }
+        if (userInput.equals("y")) {
+            saveUserInfo();
+        }
+    }
+    
+    // MODIFIES: this
+    // EFFECTS: creates a new jsonWriter and saves the balanceSheet to file
+    private void saveUserInfo(){
+        try{
+            jsonWriter = new JsonWriter(jsonStore);
+            jsonWriter.createWriter();
+            jsonWriter.write(balanceSheet);
+            jsonWriter.closeWriter();
+            System.out.println("Saved " + balanceSheet.getUser() + " to " + jsonStore);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + jsonStore);
+        }
+    }
+
+    // EFFECTS: ask the user if they would like to save their data
+    private void endScreenOptions() {
+        System.out.println("\nWould you like save your Account.");
+        System.out.println("\ty -> Yes");
+        System.out.println("\tn -> No");
     }
 
     // EFFECTS: asks the user what details they want to display about the

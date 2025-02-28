@@ -1,0 +1,7 @@
+{
+    "User": "Alonso",
+    "FinancesList": [{
+        "name": "Cash",
+        "value": 100
+    }]
+}

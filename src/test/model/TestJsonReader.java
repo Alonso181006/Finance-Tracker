@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import persistence.JsonReader;
 
-public class TestJsonReader extends TestJson{
+public class TestJsonReader extends TestJson {
     JsonReader testInvalidReader;
     JsonReader testReader1;
     JsonReader testReader2;
@@ -18,7 +18,7 @@ public class TestJsonReader extends TestJson{
 
 
     @BeforeEach
-    void setup(){
+    void setup() {
         testInvalidReader = new JsonReader("./data/testNonExistent.json");
         testReader1 = new JsonReader("./data/testReaderNoUser.json");
         testReader2 = new JsonReader("./data/testReaderAndrew.json");
@@ -28,9 +28,9 @@ public class TestJsonReader extends TestJson{
     }
 
     @Test
-    public void testReaderInvalidFile(){
+    public void testReaderInvalidFile() {
         try { 
-            UserFinancesList fList = testInvalidReader.read();
+            UserFinancesList fnList = testInvalidReader.read();
             fail("IOExveption expected");
         } catch (IOException e) {
             //pass
@@ -38,24 +38,24 @@ public class TestJsonReader extends TestJson{
     }
 
     @Test
-    public void testReaderNoUserData(){
+    public void testReaderNoUserData() {
         try {
-            UserFinancesList fList = testReader1.read();
-            assertEquals("User1", fList.getUser());
-            assertEquals(0, fList.getFinances().size());
+            UserFinancesList fnList = testReader1.read();
+            assertEquals("User1", fnList.getUser());
+            assertEquals(0, fnList.getFinances().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
 
     @Test
-    public void testReaderUserData(){
+    public void testReaderUserData() {
         try {
-            UserFinancesList fList = testReader2.read();
-            assertEquals("Andrew", fList.getUser());
-            assertEquals(2, fList.getFinances().size());
-            checkFinance("cash", 25.27, fList.getFinances().get(0));
-            checkFinance("student loans", -120.0, fList.getFinances().get(1));
+            UserFinancesList fnList = testReader2.read();
+            assertEquals("Andrew", fnList.getUser());
+            assertEquals(2, fnList.getFinances().size());
+            checkFinance("cash", 25.27, fnList.getFinances().get(0));
+            checkFinance("student loans", -120.0, fnList.getFinances().get(1));
             
         } catch (IOException e) {
             fail("Couldn't read from file");

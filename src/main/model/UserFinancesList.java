@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 //List of all the Assets and Liabilities of the User 
-public class UserFinancesList implements Writable{
+public class UserFinancesList implements Writable {
     ArrayList<Finances> financesList;
     String user;
 
@@ -63,15 +63,29 @@ public class UserFinancesList implements Writable{
         return json;
     } 
 
-    public JSONArray financesToJson(){
+    public JSONArray financesToJson() {
         JSONArray jsonArray = new JSONArray();
-        for (Finances f : this.financesList){
+        for (Finances f : this.financesList) {
             jsonArray.put(f.toJson());
         }
         return jsonArray;
     }
 
-    // TODO: Override equals and hashcode
+    @Override
+    public boolean equals(Object obj) {
+        UserFinancesList userFList = (UserFinancesList) obj;
+        
+        boolean sameName = user.equals(userFList.getUser());
+        boolean sameList = financesList.equals(userFList.getFinances());
+
+        return sameName && sameList;
+    }
+
+    @Override
+    public int hashCode() {
+        return user.hashCode() * financesList.hashCode();
+    }
+
 
     // Getters
     public ArrayList<Asset> getAssets() {
@@ -98,7 +112,7 @@ public class UserFinancesList implements Writable{
         return this.financesList;
     }
 
-    public String getUser(){
+    public String getUser() {
         return this.user;
     }
 

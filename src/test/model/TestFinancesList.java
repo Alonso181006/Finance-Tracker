@@ -149,7 +149,7 @@ public class TestFinancesList {
     }
 
     @Test
-    void testToJson(){
+    void testToJson() {
         financesList.addFinances(testAsset1);
         financesList.addFinances(testLiability2); 
         financesList.addFinances(testAsset2);

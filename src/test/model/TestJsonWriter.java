@@ -17,7 +17,7 @@ public class TestJsonWriter {
 
 
     @BeforeEach
-    void setup(){
+    void setup() {
         testFList = new UserFinancesList("Andrew");
         testFList.addFinances(new Asset("cash", 25.27));
         testFList.addFinances(new Liability("student loans", -120.0));
@@ -35,7 +35,7 @@ public class TestJsonWriter {
     }
 
     @Test
-    public void WritenoUserData(){
+    public void testWritenoUserData() { 
         try {
             testWriter = new JsonWriter("./data/testWriterNoUser.json");
             testWriter.createWriter();
@@ -43,15 +43,15 @@ public class TestJsonWriter {
             testWriter.closeWriter();
 
             testReader = new JsonReader("./data/testWriterNoUser.json");
-            UserFinancesList fList = testReader.read();
-            testFList.equals(fList);
+            UserFinancesList fnList = testReader.read();
+            testFList.equals(fnList);
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }    
     }
 
     @Test
-    public void WriteonTopofUserData(){
+    public void testWriteonTopofUserData() {
         try {
             testWriter = new JsonWriter("./data/testWriterAndrew.json");
             testFList.addFinances(new Asset("lottery", 1000.13));
@@ -61,11 +61,8 @@ public class TestJsonWriter {
             testWriter.closeWriter();
 
             testReader = new JsonReader("./data/testWriterAndrew.json");
-            UserFinancesList fList = testReader.read();
-            testFList.equals(fList);
-            // TODO: why does equals pass but the other doesnt
-            //       assertEquals(testFList, fList); (fails as it should)
-            //       testFList.equals(fList); (passes)
+            UserFinancesList fnList = testReader.read();
+            assertTrue(testFList.equals(fnList));
         } catch (IOException e) {
             fail("exception should not have been thrown");
         }        

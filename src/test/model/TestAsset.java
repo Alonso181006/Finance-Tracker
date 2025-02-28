@@ -73,14 +73,11 @@ public class TestAsset {
     }
 
     @Test
-    public void testToJson(){
+    public void testToJson() {
         JSONObject testJson = new JSONObject();
         testJson.put("name", "cash");
         testJson.put("value", 30);
         assertEquals(testJson.toString(), testAsset.toJson().toString());
-        // TODO: Is this sloppy code, should I impore a JSON library or 
-        //       overide equals() and hashCode()
-
     }
 
 }

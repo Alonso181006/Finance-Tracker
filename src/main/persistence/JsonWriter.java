@@ -27,8 +27,8 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes the JSON representation of the financesList to destination
-    public void write(UserFinancesList fList) {
-        JSONObject json = fList.toJson();
+    public void write(UserFinancesList fnList) {
+        JSONObject json = fnList.toJson();
         saveToFile(json.toString(TAB));
     }
 
