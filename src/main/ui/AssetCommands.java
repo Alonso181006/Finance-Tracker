@@ -4,7 +4,7 @@ import java.util.Scanner;
 import model.Asset;
 import model.UserFinancesList;
 
-// Commands for Assets
+// Commands for Assets in FinanceTracker Application
 public class AssetCommands {
     private Scanner input;
     private UserFinancesList balanceSheet;
@@ -116,14 +116,14 @@ public class AssetCommands {
         }
     }
 
-    //EFFECTS: displays the modify options for the Asset
+    // EFFECTS: displays the modify options for the Asset
     public void displayAssetModifyOptions() {
         System.out.println("\nWhat would you like to do: ");
         System.out.println("\td -> Deposit Money");
         System.out.println("\tw -> Withdraw Money");
     }
 
-    //EFFECTS: prints the values of the compound effect of the inputed asset
+    // EFFECTS: prints the values of the compound effect of the inputed asset
     private void compoundAsset() {
         System.out.println("What's the name of the asset you would like to view");
         String name = input.next();

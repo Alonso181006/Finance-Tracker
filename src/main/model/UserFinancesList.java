@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import persistence.Writable;
 
-//List of all the Assets and Liabilities of the User 
+// List of all the Assets and Liabilities of the User 
 public class UserFinancesList implements Writable {
     ArrayList<Finances> financesList;
     String user;
@@ -55,14 +55,15 @@ public class UserFinancesList implements Writable {
 
     } 
 
-    //EFFECTS: returns Finances in this list as a JSON array
+    //EFFECTS: returns UserFinancesList as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("User", this.user);
         json.put("FinancesList", financesToJson());
         return json;
     } 
-
+    
+    // EFFECTS: returns finances in the finances list as a JSON Array
     public JSONArray financesToJson() {
         JSONArray jsonArray = new JSONArray();
         for (Finances f : this.financesList) {
@@ -72,6 +73,7 @@ public class UserFinancesList implements Writable {
     }
 
     @Override
+    // EFFECTS: Indicates whether some other object is "equal to" this one.
     public boolean equals(Object obj) {
         UserFinancesList userFList = (UserFinancesList) obj;
         
@@ -81,10 +83,10 @@ public class UserFinancesList implements Writable {
     }
 
     @Override
+    // EFFECTS: Returns a hash code value for the object.
     public int hashCode() {
         return user.hashCode() * financesList.hashCode();
     }
-
 
     // Getters
     public ArrayList<Asset> getAssets() {

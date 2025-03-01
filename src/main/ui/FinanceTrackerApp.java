@@ -2,7 +2,6 @@ package ui;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,7 +53,7 @@ public class FinanceTrackerApp {
 
     // MODIFIES: this
     // EFFECTS: finds the user within the saved json files
-    private void findUserInfo(){
+    private void findUserInfo() {
         System.out.println("\n What is your Username?");
         userInput = input.next();
         jsonStore = "./data/" + userInput + ".json";
@@ -70,7 +69,7 @@ public class FinanceTrackerApp {
 
     // MODIFIES: this
     // EFFECTS: creates a new User with associated json file
-    private void createUserInfo(){
+    private void createUserInfo() {
         System.out.println("\n What is your Username?");
         userInput = input.next();
         jsonStore = "./data/" + userInput + ".json";
@@ -133,7 +132,7 @@ public class FinanceTrackerApp {
     }
 
     // EFFECTS: gives the user the option to save their username
-    private void quitProgram(){
+    private void quitProgram() {
         endScreenOptions();
         userInput = input.next();
 
@@ -149,8 +148,8 @@ public class FinanceTrackerApp {
     
     // MODIFIES: this
     // EFFECTS: creates a new jsonWriter and saves the balanceSheet to file
-    private void saveUserInfo(){
-        try{
+    private void saveUserInfo() {
+        try {
             jsonWriter = new JsonWriter(jsonStore);
             jsonWriter.createWriter();
             jsonWriter.write(balanceSheet);
@@ -222,7 +221,7 @@ public class FinanceTrackerApp {
         }
     }
 
-    //EFFECTS: displays a list of the networth of the indiviual
+    // EFFECTS: displays a list of the networth of the indiviual
     private void printNetworth() {
         System.out.printf("\nNetworth: $%.2f\n", balanceSheet.netWorth());
     }

@@ -79,5 +79,4 @@ public class TestAsset {
         testJson.put("value", 30);
         assertEquals(testJson.toString(), testAsset.toJson().toString());
     }
-
 }

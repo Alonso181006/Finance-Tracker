@@ -161,6 +161,5 @@ public class TestFinancesList {
         testJson.put("User", "Alonso");
         testJson.put("FinancesList", testJsonArray);
         assertEquals(testJson.toString(), financesList.toJson().toString());
-        // TODO: do we need to break up the code and put comments for readability
     }
 }

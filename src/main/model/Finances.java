@@ -18,13 +18,13 @@ public abstract class Finances implements Writable {
         this.value = financesValue;
     }
 
-    // MODIES: this
+    // MODIFIES: this
     // EFFECTS: Adds the value of the finance object by the amount passed
     public void addValue(double amount) {
         this.value += amount;
     }
 
-    // MODIES: this
+    // MODIFIES: this
     // EFFECTS: Subtracts the value of the finance object by the amount passed
     public void subValue(double amount) {
         this.value -= amount;
@@ -47,6 +47,7 @@ public abstract class Finances implements Writable {
     }
 
     @Override
+    // EFFECTS: Indicates whether some other object is "equal to" this one.
     public boolean equals(Object obj) {
         Finances finance = (Finances) obj;
 
@@ -57,6 +58,7 @@ public abstract class Finances implements Writable {
     }
 
     @Override
+    // EFFECTS: Returns a hash code value for the object.
     public int hashCode() {
         int val = (int) Math.round(this.value);
         return name.hashCode() * val;

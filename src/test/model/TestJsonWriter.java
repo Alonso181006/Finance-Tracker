@@ -11,10 +11,9 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 public class TestJsonWriter {
-    JsonWriter testWriter;
-    JsonReader testReader;
-    UserFinancesList testFList;
-
+    private JsonWriter testWriter;
+    private JsonReader testReader;
+    private UserFinancesList testFList;
 
     @BeforeEach
     void setup() {
@@ -66,7 +65,7 @@ public class TestJsonWriter {
             assertTrue(testFList.equals(fnList));
             assertTrue(testFList.hashCode() == fnList.hashCode());
         } catch (IOException e) {
-            fail("exception should not have been thrown");
+            fail("Exception should not have been thrown");
         }        
     }
 }

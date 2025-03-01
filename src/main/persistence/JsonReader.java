@@ -14,7 +14,8 @@ import model.Asset;
 import model.Liability;
 import model.UserFinancesList;
 
-// TODO: how do I cite the file JsonSerializationDemo
+// Modeled based on https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // A reader of the JSON data stored in the file and translates it to a financesList 
 public class JsonReader {
     private String source;
@@ -51,7 +52,7 @@ public class JsonReader {
         return fnList;
     }
 
-    // MODIFIES: wr
+    // MODIFIES: fnList
     // EFFECTS: parses financesList from JSON object and adds them to UserFinancesList
     private void addFinances(UserFinancesList fnList, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("FinancesList");
@@ -61,7 +62,7 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: wr
+    // MODIFIES: fnList
     // EFFECTS: parses finance from JSON object and adds it to UserFinancesList
     private void addFinance(UserFinancesList fnList, JSONObject jsonObject) {
         Finances finance = null;

@@ -4,7 +4,7 @@ import java.util.Scanner;
 import model.UserFinancesList;
 import model.Liability;
 
-// Commands for Liabilities
+// Commands for Liabilities in Application
 public class LiabilityCommands {
     private Scanner input;
     private UserFinancesList balanceSheet;
@@ -116,14 +116,14 @@ public class LiabilityCommands {
         }
     }
 
-    //EFFECTS: displays the modify options for the Liability
+    // EFFECTS: displays the modify options for the Liability
     public void displayLiabilityModifyOptions() {
         System.out.println("\nWhat would you like to do: ");
         System.out.println("\tp -> Pay off");
         System.out.println("\tb -> Borrow");
     }
 
-    //EFFECTS: prints the values of the compound effect of the inputed liability
+    // EFFECTS: prints the values of the compound effect of the inputed liability
     private void compoundLiability() {
         System.out.println("What's the name of the liability you would like to view");
         String name = input.next();

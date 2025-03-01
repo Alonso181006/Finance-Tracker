@@ -11,11 +11,10 @@ import org.junit.jupiter.api.Test;
 import persistence.JsonReader;
 
 public class TestJsonReader extends TestJson {
-    JsonReader testInvalidReader;
-    JsonReader testReader1;
-    JsonReader testReader2;
-    UserFinancesList testFList;
-
+    private JsonReader testInvalidReader;
+    private JsonReader testReader1;
+    private JsonReader testReader2;
+    private UserFinancesList testFList;
 
     @BeforeEach
     void setup() {
@@ -60,6 +59,4 @@ public class TestJsonReader extends TestJson {
             fail("Couldn't read from file");
         }
     }
-
-
 }

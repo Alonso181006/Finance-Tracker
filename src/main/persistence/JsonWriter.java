@@ -1,10 +1,11 @@
 package persistence;
 
 import org.json.JSONObject;
-
 import java.io.*;
-
 import model.UserFinancesList;
+
+
+// Modeled based on https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
 // A writer that turns the financesList into a JSON and then add to file
 public class JsonWriter {
@@ -12,7 +13,7 @@ public class JsonWriter {
     private PrintWriter writer;
     private String file;
 
-    //EFFFECTS: constructs the writer with a file as the end destination
+    // EFFECTS: constructs the writer with a file as the end destination
     public JsonWriter(String file) {
         this.file = file;
     }
