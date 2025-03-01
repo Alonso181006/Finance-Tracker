@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -74,7 +75,12 @@ public class FinanceTrackerApp {
         userInput = input.next();
         jsonStore = "./data/" + userInput + ".json";
 
-        balanceSheet = new UserFinancesList(userInput);
+        File f = new File(jsonStore);
+        if (f.exists()) { 
+            System.out.println("Username already exists try again");
+        } else {
+            balanceSheet = new UserFinancesList(userInput);
+        }
     }
 
 
