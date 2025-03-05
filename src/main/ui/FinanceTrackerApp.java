@@ -71,7 +71,7 @@ public class FinanceTrackerApp {
     // MODIFIES: this
     // EFFECTS: creates a new User with associated json file
     private void createUserInfo() {
-        System.out.println("\n What is your Username?");
+        System.out.println("\nWhat is your Username?");
         userInput = input.next();
         jsonStore = "./data/" + userInput + ".json";
 
@@ -79,6 +79,7 @@ public class FinanceTrackerApp {
         if (f.exists()) { 
             System.out.println("Username already exists try again");
         } else {
+            System.out.println("\nCreating new user file...");
             balanceSheet = new UserFinancesList(userInput);
         }
     }
