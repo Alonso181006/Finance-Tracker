@@ -19,3 +19,6 @@ The finance tracker specifically will start off by collecting your data about so
 ### Extra
 - As a user, I want to be able create a Monthly budget by adding categories such a Food, Transportation with an alloted  amount of money I can spend for each class.
 - As a user I want to be able to track monthly recurring memberships with date of renewnal.
+
+## Instructions for End User
+- 
