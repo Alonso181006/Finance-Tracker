@@ -1,26 +1,25 @@
 package ui;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class FinanceTracker extends JFrame{
 
-    public static void main(String[] args) {
-        JFrame window = new JFrame("Finance Tracker App");
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setSize(400, 400);
-        window.setVisible(true);
+    public FinanceTracker() {
+        super("Finance Tracker App");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 400);
+        setVisible(true);
 
         //to not be able to resize
-        window.setResizable(true);
+        setResizable(true);
 
         // adding component 
         JButton button = new JButton("Button");
-        window.add(button);
+        add(button);
 
         //To visualize the button
-        window.repaint();
-        window.revalidate();
+        repaint();
+        revalidate();
     }
 
 }
