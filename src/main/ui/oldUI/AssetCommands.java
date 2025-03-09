@@ -1,4 +1,4 @@
-package ui;
+package ui.oldUI;
 
 import java.util.Scanner;
 import model.Asset;
