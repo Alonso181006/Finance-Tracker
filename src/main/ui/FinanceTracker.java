@@ -6,10 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class FinanceTracker extends JFrame implements ActionListener{
+import model.UserFinancesList;
+
+public class FinanceTracker extends JFrame implements ActionListener {
     private JButton assetButton, liabilityButton, backButton1, backButton2;
-    private JPanel mainPanel, menuPanel, assestPanel, liabilityPanel;
+    private JPanel startScreenPanel, mainPanel, menuPanel, assestPanel, liabilityPanel;
     private CardLayout cardLayout;
+
+    private UserFinancesList balanceSheet;
 
 
     public FinanceTracker() {
@@ -24,6 +28,9 @@ public class FinanceTracker extends JFrame implements ActionListener{
         // main Panel that contains other switchable  
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
+
+        //Start Screen
+        startScreenPanel = new StartScreen(this, balanceSheet);
 
         // Create other Menu
         menuPanel = new JPanel();
@@ -52,14 +59,20 @@ public class FinanceTracker extends JFrame implements ActionListener{
         backButton2.addActionListener(this);
         liabilityPanel.add(backButton2);
 
+        mainPanel.add(startScreenPanel, "Start Screen");
         mainPanel.add(menuPanel, "Menu");
         mainPanel.add(assestPanel, "Assets");
         mainPanel.add(liabilityPanel, "Liabilities");
         add(mainPanel);
 
+
         //To visualize the button
         repaint();
         revalidate();
+
+        balanceSheet = null;
+
+
     }
 
     @Override
@@ -71,7 +84,10 @@ public class FinanceTracker extends JFrame implements ActionListener{
         } else if (e.getSource() == backButton1 | e.getSource() == backButton2) {
             cardLayout.show(mainPanel, "Menu");
         }
+    }
 
+    public void show(String panel) {
+        cardLayout.show(mainPanel, panel);
     }
 
 }
