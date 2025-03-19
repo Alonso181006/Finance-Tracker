@@ -16,6 +16,9 @@ The finance tracker specifically will start off by collecting your data about so
 - As a user, I want to save my Finance tracker under a username (if I so choose), when I select the quit option from the application menu
 - As a user, I want to be able to load up my Finance Tracker based on my username from file(if I so choose)
 
+- 
+- 
+
 ### Extra
 - As a user, I want to be able create a Monthly budget by adding categories such a Food, Transportation with an alloted  amount of money I can spend for each class.
 - As a user I want to be able to track monthly recurring memberships with date of renewnal.

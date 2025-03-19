@@ -9,7 +9,6 @@ import java.util.List;
 import javax.swing.*;
 
 import model.Finances;
-import model.UserFinancesList;
 
 public class FinanceTracker extends JFrame implements ActionListener {
     private JButton assetButton, liabilityButton;

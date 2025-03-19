@@ -148,6 +148,7 @@ public class StartScreen extends JPanel implements ActionListener {
             createLabel("Username already exists. Try again!");
         } else {
             balanceSheet.setList(new UserFinancesList(userInput));
+            financeTracker.show("Menu");
         }
     }
 }
