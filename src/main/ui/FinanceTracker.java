@@ -36,28 +36,20 @@ public class FinanceTracker extends JFrame implements ActionListener {
         menuPanel = new JPanel();
 
         // adding component 
-        assetButton = new JButton("Liabilities");
+        assetButton = new JButton("Assets");
         assetButton.addActionListener(this);
         menuPanel.add(assetButton);
 
-        liabilityButton = new JButton("Assets");
+        liabilityButton = new JButton("Liabilities");
         liabilityButton.addActionListener(this);
         menuPanel.add(liabilityButton);
 
 
         // Panel for Assets
-        assestPanel = new JPanel();
-        assestPanel.add(new JLabel("Add Liability Options Here"));
-        backButton1 = new JButton("Back");
-        backButton1.addActionListener(this);
-        assestPanel.add(backButton1);
+        assestPanel = new AssetPanel(this, balanceSheet);
 
         // Panel for Liabilities
-        liabilityPanel = new JPanel();
-        liabilityPanel.add(new JLabel("Remove Asset Options Here"));
-        backButton2 = new JButton("Back");
-        backButton2.addActionListener(this);
-        liabilityPanel.add(backButton2);
+        liabilityPanel = new LiabilitiesPanel(this, balanceSheet);
 
         mainPanel.add(startScreenPanel, "Start Screen");
         mainPanel.add(menuPanel, "Menu");
@@ -81,7 +73,7 @@ public class FinanceTracker extends JFrame implements ActionListener {
             cardLayout.show(mainPanel, "Assets");
         } else if (e.getSource() == liabilityButton) {
             cardLayout.show(mainPanel, "Liabilities");
-        } else if (e.getSource() == backButton1 | e.getSource() == backButton2) {
+        } else if (e.getSource() == backButton1) {
             cardLayout.show(mainPanel, "Menu");
         }
     }
