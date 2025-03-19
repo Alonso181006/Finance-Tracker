@@ -3,21 +3,28 @@ package ui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
+import model.Finances;
 import model.UserFinancesList;
 
 public class FinanceTracker extends JFrame implements ActionListener {
-    private JButton assetButton, liabilityButton, backButton1, backButton2;
+    private JButton assetButton, liabilityButton;
     private JPanel startScreenPanel, mainPanel, menuPanel, assestPanel, liabilityPanel;
     private CardLayout cardLayout;
-
-    private UserFinancesList balanceSheet;
+    private JList<String> list;
+    protected BalanceSheet balanceSheet;
+    private String[] data;
 
 
     public FinanceTracker() {
         super("Finance Tracker App");
+
+        balanceSheet = new BalanceSheet(null);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 400);
         setVisible(true);
@@ -44,12 +51,20 @@ public class FinanceTracker extends JFrame implements ActionListener {
         liabilityButton.addActionListener(this);
         menuPanel.add(liabilityButton);
 
+        List<String> names = new ArrayList<>();
+        names.add("hi");
+        data = names.toArray(new String[0]);
+
+        list = new JList<>(data);
+        list.setBounds(100, 100, 200, 1000);
+        menuPanel.add(list);
+
 
         // Panel for Assets
-        assestPanel = new AssetPanel(this, balanceSheet);
+        assestPanel = new AssetPanel(this, balanceSheet.getList());
 
         // Panel for Liabilities
-        liabilityPanel = new LiabilitiesPanel(this, balanceSheet);
+        liabilityPanel = new LiabilitiesPanel(this, balanceSheet.getList());
 
         mainPanel.add(startScreenPanel, "Start Screen");
         mainPanel.add(menuPanel, "Menu");
@@ -61,10 +76,6 @@ public class FinanceTracker extends JFrame implements ActionListener {
         //To visualize the button
         repaint();
         revalidate();
-
-        balanceSheet = null;
-
-
     }
 
     @Override
@@ -73,13 +84,27 @@ public class FinanceTracker extends JFrame implements ActionListener {
             cardLayout.show(mainPanel, "Assets");
         } else if (e.getSource() == liabilityButton) {
             cardLayout.show(mainPanel, "Liabilities");
-        } else if (e.getSource() == backButton1) {
-            cardLayout.show(mainPanel, "Menu");
         }
     }
 
     public void show(String panel) {
         cardLayout.show(mainPanel, panel);
+        updateList();
+    }
+
+    public void updateList() {
+        menuPanel.remove(list);
+        //List
+        List<Finances> myList = balanceSheet.getList().getFinances();
+        List<String> names = new ArrayList<>();
+        for (Finances f: myList) {
+            String input = String.format("%s - $%.2f", f.getName(), f.getValue());
+            names.add(input);
+        }
+        data = names.toArray(new String[0]);
+        list = new JList<>(data);
+
+        menuPanel.add(list);
     }
 
 }

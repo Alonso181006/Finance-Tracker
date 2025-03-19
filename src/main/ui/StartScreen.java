@@ -29,13 +29,13 @@ public class StartScreen extends JPanel implements ActionListener {
     private GridBagConstraints gbc;
     private JLabel responseLabel;
 
-    private UserFinancesList balanceSheet;
+    private BalanceSheet balanceSheet;
     private JsonReader jsonReader;
     private String jsonStore;
     private String button;
 
 
-    public StartScreen(FinanceTracker financeTracker, UserFinancesList balanceSheet) {
+    public StartScreen(FinanceTracker financeTracker, BalanceSheet balanceSheet) {
         // init 
         this.financeTracker = financeTracker;
         this.balanceSheet = balanceSheet;
@@ -49,7 +49,7 @@ public class StartScreen extends JPanel implements ActionListener {
         initGridLayout();
     } 
 
-    public void initComponents() {
+    private void initComponents() {
         // Panels
         buttonPanel = new JPanel(new FlowLayout());
         responsePanel = new JPanel(new FlowLayout());
@@ -65,7 +65,7 @@ public class StartScreen extends JPanel implements ActionListener {
 
     }
 
-    public void initGridLayout() {
+    private void initGridLayout() {
         // ButtonPanel
         gbc.gridwidth = 4;
         gbc.gridx = 0;
@@ -97,7 +97,7 @@ public class StartScreen extends JPanel implements ActionListener {
         }
     }
 
-    public void createTextField() {
+    private void createTextField() {
         //create textfield
         responseField = new JTextField(10);
         responseField.setFont(new Font("Times New Roman", Font.PLAIN, 24));
@@ -110,7 +110,7 @@ public class StartScreen extends JPanel implements ActionListener {
         revalidate();
     }
 
-    public void createLabel(String response) {
+    private void createLabel(String response) {
         //create textfield
         responseLabel = new JLabel(response);
         responseLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
@@ -122,13 +122,13 @@ public class StartScreen extends JPanel implements ActionListener {
         revalidate();
     }
 
-    public void findUserInfo() {
+    private void findUserInfo() {
         String userInput = responseField.getText();
         jsonStore = "./data/" + userInput + ".json";
 
         try {
             jsonReader = new JsonReader(jsonStore);
-            balanceSheet = jsonReader.read();
+            balanceSheet.setList(jsonReader.read());
             financeTracker.show("Menu");
         } catch (IOException e) {
             responsePanel.removeAll();
@@ -147,7 +147,7 @@ public class StartScreen extends JPanel implements ActionListener {
             responsePanel.removeAll();
             createLabel("Username already exists. Try again!");
         } else {
-            balanceSheet = new UserFinancesList(userInput);
+            balanceSheet.setList(new UserFinancesList(userInput));
         }
     }
 }
