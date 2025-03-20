@@ -232,4 +232,5 @@ public class FinanceTrackerApp {
     private void printNetworth() {
         System.out.printf("\nNetworth: $%.2f\n", balanceSheet.netWorth());
     }
+
 }
