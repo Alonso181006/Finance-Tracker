@@ -6,15 +6,19 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import model.Asset;
+import model.Finances;
 import model.UserFinancesList;
 
 public class AssetPanel extends JPanel implements ActionListener{
@@ -28,7 +32,8 @@ public class AssetPanel extends JPanel implements ActionListener{
     private GridBagConstraints gbc;
     private JTextField responseField;
     private JFormattedTextField numberField;
-
+    private JList list;
+    private String[] data;
     
     private FinanceTracker financeTracker;
     private UserFinancesList balanceSheet;
@@ -43,10 +48,10 @@ public class AssetPanel extends JPanel implements ActionListener{
         gbc = new GridBagConstraints();
 
         // Add panels
-        displayPanel = new JPanel();
+        displayPanel = new JPanel(new GridBagLayout());
         buttonPanel = new JPanel(new GridBagLayout());
 
-        displayPanel.add(new JLabel("Assets Displayed Here"));
+        updateList();
 
         setUpButtons();
 
@@ -78,6 +83,7 @@ public class AssetPanel extends JPanel implements ActionListener{
         } else if (e.getSource() == exitButton) {
             resetPanel();
         }
+        updateList();
     }
 
     private void resetPanel (){
@@ -86,6 +92,29 @@ public class AssetPanel extends JPanel implements ActionListener{
         setUpButtons();
         repaint();
         revalidate();
+    }
+
+    public void updateList() {
+        gbc = new GridBagConstraints();  // Reset GridBagConstraints
+        displayPanel.removeAll();
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        displayPanel.add(new JLabel("Assets Displayed Here:"), gbc);
+
+        //List
+        List<Asset> myList = balanceSheet.getAssets();
+        List<String> names = new ArrayList<>();
+        for (Finances f: myList) {
+            String input = String.format("%s - $%.2f", f.getName(), f.getValue());
+            names.add(input);
+        }
+        data = names.toArray(new String[0]);
+        list = new JList<>(data);
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        displayPanel.add(list, gbc);
     }
 
     private void setUpButtons() {
