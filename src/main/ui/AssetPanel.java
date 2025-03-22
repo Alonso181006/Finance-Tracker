@@ -20,6 +20,7 @@ import model.Asset;
 import model.Finances;
 import model.UserFinancesList;
 
+// JPanel to edit the Assets of the user
 public class AssetPanel extends JPanel implements ActionListener {
     private JPanel displayPanel;
     private JPanel buttonPanel;
@@ -39,6 +40,9 @@ public class AssetPanel extends JPanel implements ActionListener {
     private String typeButton;
     private String assetName;
 
+    // REQUIRES: financeTracker & balanceSheet to not be null
+    // EFFECTS: The reference to the main Finance Tracker is set to financeTracker, and the balance 
+    //          sheet of user is set to balanceSheet and the panel is initialized
     public AssetPanel(FinanceTracker financeTracker, UserFinancesList balanceSheet) {
         this.financeTracker = financeTracker;
         this.balanceSheet = balanceSheet;
@@ -46,17 +50,19 @@ public class AssetPanel extends JPanel implements ActionListener {
         setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
 
+        initPanels();
+        updateDisplay();
+        setUpButtons();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: initialize the panels in this
+    private void initPanels() {
         // Add panels
         displayPanel = new JPanel(new GridBagLayout());
         buttonPanel = new JPanel(new GridBagLayout());
 
-        updateList();
-
-        setUpButtons();
-
         // ButtonPanel
-        gbc.gridwidth = 1;
-        gbc.gridheight = 5;
         gbc.gridx = 0;
         gbc.gridy = 1;
         add(buttonPanel, gbc);
@@ -64,12 +70,13 @@ public class AssetPanel extends JPanel implements ActionListener {
         // ResponsePanel
         gbc.gridx = 1;
         gbc.gridy = 1;
-        gbc.gridwidth = 1;
         add(displayPanel, gbc);
-
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: performs different actions based on the source of the
+    //          ActionListener
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
             financeTracker.show("Menu");
@@ -82,9 +89,11 @@ public class AssetPanel extends JPanel implements ActionListener {
         } else if (e.getSource() == exitButton) {
             resetPanel();
         }
-        updateList();
+        updateDisplay();
     }
 
+    // MODIFIES: this
+    // EFFECTS: reset the panel to original state after performing an action
     private void resetPanel() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
         buttonPanel.removeAll();
@@ -93,7 +102,9 @@ public class AssetPanel extends JPanel implements ActionListener {
         revalidate();
     }
 
-    public void updateList() {
+    // MODIFIES: this
+    // EFFECTS: updates the display panel
+    public void updateDisplay() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
         displayPanel.removeAll();
         gbc.gridwidth = 1;
@@ -101,6 +112,12 @@ public class AssetPanel extends JPanel implements ActionListener {
         gbc.gridy = 0;
         displayPanel.add(new JLabel("Assets Displayed Here:"), gbc);
 
+        updateList();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: updates the list based on any additions or removals of assets
+    private void updateList() {
         //List
         List<Asset> myList = balanceSheet.getAssets();
         List<String> names = new ArrayList<>();
@@ -116,6 +133,8 @@ public class AssetPanel extends JPanel implements ActionListener {
         displayPanel.add(list, gbc);
     }
 
+    // MODIFIES: this
+    // EFFECTS: initialize the buttons for the buttons panel
     private void setUpButtons() {
         // add buttons 
         gbc.gridwidth = 1;
@@ -125,12 +144,10 @@ public class AssetPanel extends JPanel implements ActionListener {
         addButton.addActionListener(this);
         buttonPanel.add(addButton, gbc);
 
-
         gbc.gridy = 2;
         remButton = new JButton("Remove Asset");
         remButton.addActionListener(this);
         buttonPanel.add(remButton, gbc);
-
 
         gbc.gridy = 4;
         backButton = new JButton("Back");
@@ -138,6 +155,8 @@ public class AssetPanel extends JPanel implements ActionListener {
         buttonPanel.add(backButton, gbc);
     }
 
+    // MODIFIES: this
+    // EFFECTS: prompt the user with a question to answer in the text field provided
     private void askSpecifications(String typeButton) {
         this.typeButton = typeButton;
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
@@ -155,6 +174,9 @@ public class AssetPanel extends JPanel implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: based on value of typeButton utilize the text field for different 
+    //          usage cases
     private void preformAction() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
 
@@ -167,6 +189,9 @@ public class AssetPanel extends JPanel implements ActionListener {
         }
     }
 
+    // MODIFIES: this 
+    // EFFECTS: gets asset name from text field and prompts question for 
+    //          value of asses
     private void getAssetName() {
         assetName = responseField.getText();
         buttonPanel.removeAll();
@@ -175,12 +200,16 @@ public class AssetPanel extends JPanel implements ActionListener {
         typeButton = "value";
     }
 
+    // MODIFIES: this 
+    // EFFECTS: gets asset value from number field and adds asset to balance sheet
     private void getAssetValue() {
         double amount = ((Number) numberField.getValue()).doubleValue();
         balanceSheet.addFinances(new Asset(assetName, amount));
         resetPanel();    
     }
 
+    // MODIFIES: this 
+    // EFFECTS: removes the asset from the balance sheet
     private void removeAsset() {
         String name = responseField.getText();
         Asset currentAsset = findAsset(name);      
@@ -195,6 +224,8 @@ public class AssetPanel extends JPanel implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a new exit JButton for button panel with grid layout specifications
     private void createExitButton() {
         exitButton = new JButton("Exit");
         gbc.gridwidth = 1;
@@ -204,6 +235,8 @@ public class AssetPanel extends JPanel implements ActionListener {
         buttonPanel.add(exitButton, gbc);
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a new JTextfield for button panel with grid layout specifications
     private void createTextField() {
         //create textfield
         responseField = new JTextField(10);
@@ -217,6 +250,8 @@ public class AssetPanel extends JPanel implements ActionListener {
         revalidate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a new JLabel for button panel with grid layout specifications
     private void createLabel(String response) {
         //create textfield
         responseLabel = new JLabel(response);
@@ -229,6 +264,8 @@ public class AssetPanel extends JPanel implements ActionListener {
         revalidate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a new NumberField for buttons panel with grid layout specifications
     private void createNumberField() {
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
         numberField = new JFormattedTextField(numberFormat);

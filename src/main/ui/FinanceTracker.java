@@ -20,6 +20,8 @@ public class FinanceTracker extends JFrame implements ActionListener {
     private CardLayout cardLayout;
     protected UserFinancesList balanceSheet;
 
+    // EFFECTS: creates an the main Jframe with a card layout to 
+    //          organize the different panels
     public FinanceTracker() {
         super("Finance Tracker App");
 
@@ -40,13 +42,15 @@ public class FinanceTracker extends JFrame implements ActionListener {
         mainPanel.add(startScreenPanel, "Start Screen");
         add(mainPanel);
 
-
-        //To visualize the button
+        //To visualize changes
         repaint();
         revalidate();
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: performs different actions based on the source of the
+    //          ActionListener
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == assetButton) {
             cardLayout.show(mainPanel, "Assets");
@@ -55,6 +59,10 @@ public class FinanceTracker extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: shows the panel listed within the card layout, as well 
+    //          as creates the rest of the panels based on the data passed
+    //          from the start screen
     public void show(String panel) {
         balanceSheet = startScreenPanel.getBalanceSheet();
         String jsonStore = startScreenPanel.getJsonStore();

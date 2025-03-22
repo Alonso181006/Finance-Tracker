@@ -45,7 +45,7 @@ public class MenuPanel extends JPanel implements ActionListener {
     // REQUIRES: financeTracker & balanceSheet to not be null
     // EFFECTS: The reference to the main Finance Tracker is set to financeTracker, the balance 
     //          sheet of user is set to balanceSheet, and the string for the location of the data 
-    //          in the system is set to jsonStore
+    //          in the system is set to jsonStore, the panel is initialized, and images loaded
     public MenuPanel(FinanceTracker financeTracker, UserFinancesList balanceSheet, String jsonStore) {
         this.financeTracker = financeTracker;
         this.balanceSheet = balanceSheet;
