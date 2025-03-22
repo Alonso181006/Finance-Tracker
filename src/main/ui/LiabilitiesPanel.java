@@ -19,9 +19,8 @@ import javax.swing.JTextField;
 import model.Finances;
 import model.Liability;
 import model.UserFinancesList;
-import ui.console.LiabilityCommands;
 
-public class LiabilitiesPanel extends JPanel implements ActionListener{
+public class LiabilitiesPanel extends JPanel implements ActionListener {
     private JPanel displayPanel;
     private JPanel buttonPanel;
     private JButton backButton;
@@ -40,7 +39,7 @@ public class LiabilitiesPanel extends JPanel implements ActionListener{
     private String typeButton;
     private String liabilityName;
 
-    public LiabilitiesPanel(FinanceTracker financeTracker, UserFinancesList balanceSheet){
+    public LiabilitiesPanel(FinanceTracker financeTracker, UserFinancesList balanceSheet) {
         this.financeTracker = financeTracker;
         this.balanceSheet = balanceSheet;
 
@@ -72,7 +71,7 @@ public class LiabilitiesPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == backButton) {
+        if (e.getSource() == backButton) {
             financeTracker.show("Menu");
         } else if (e.getSource() == addButton) {
             askSpecifications("add");
@@ -86,7 +85,7 @@ public class LiabilitiesPanel extends JPanel implements ActionListener{
         updateList();
     }
 
-    private void resetPanel (){
+    private void resetPanel() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
         buttonPanel.removeAll();
         setUpButtons();
@@ -154,12 +153,9 @@ public class LiabilitiesPanel extends JPanel implements ActionListener{
             createTextField();
             createExitButton();
         }
-
-        repaint();
-        revalidate();
     }
 
-    private void preformAction(){
+    private void preformAction() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
 
         if (typeButton == "add") {
@@ -199,7 +195,7 @@ public class LiabilitiesPanel extends JPanel implements ActionListener{
         }
     }
 
-    private void createExitButton(){
+    private void createExitButton() {
         exitButton = new JButton("Exit");
         gbc.gridwidth = 1;
         gbc.gridx = 0;

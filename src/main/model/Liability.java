@@ -2,6 +2,7 @@ package model;
 
 // Represents an liability with a name, and value (in CAD)
 public class Liability extends Finances {
+    
     // EFFECTS: Constructs a Liability based on finances and financesValue
     public Liability(String financesName, double financesValue) {
         super(financesName, financesValue);

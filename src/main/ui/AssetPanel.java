@@ -20,7 +20,7 @@ import model.Asset;
 import model.Finances;
 import model.UserFinancesList;
 
-public class AssetPanel extends JPanel implements ActionListener{
+public class AssetPanel extends JPanel implements ActionListener {
     private JPanel displayPanel;
     private JPanel buttonPanel;
     private JButton backButton;
@@ -39,7 +39,7 @@ public class AssetPanel extends JPanel implements ActionListener{
     private String typeButton;
     private String assetName;
 
-    public AssetPanel(FinanceTracker financeTracker, UserFinancesList balanceSheet){
+    public AssetPanel(FinanceTracker financeTracker, UserFinancesList balanceSheet) {
         this.financeTracker = financeTracker;
         this.balanceSheet = balanceSheet;
 
@@ -71,7 +71,7 @@ public class AssetPanel extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == backButton) {
+        if (e.getSource() == backButton) {
             financeTracker.show("Menu");
         } else if (e.getSource() == addButton) {
             askSpecifications("add");
@@ -85,7 +85,7 @@ public class AssetPanel extends JPanel implements ActionListener{
         updateList();
     }
 
-    private void resetPanel (){
+    private void resetPanel() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
         buttonPanel.removeAll();
         setUpButtons();
@@ -153,12 +153,9 @@ public class AssetPanel extends JPanel implements ActionListener{
             createTextField();
             createExitButton();
         }
-
-        repaint();
-        revalidate();
     }
 
-    private void preformAction(){
+    private void preformAction() {
         gbc = new GridBagConstraints();  // Reset GridBagConstraints
 
         if (typeButton == "add") {
@@ -198,7 +195,7 @@ public class AssetPanel extends JPanel implements ActionListener{
         }
     }
 
-    private void createExitButton(){
+    private void createExitButton() {
         exitButton = new JButton("Exit");
         gbc.gridwidth = 1;
         gbc.gridx = 0;

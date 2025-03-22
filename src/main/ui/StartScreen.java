@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 import model.UserFinancesList;
 import persistence.JsonReader;
 
-
+// Represents an JPanel for the Start Screen
 public class StartScreen extends JPanel implements ActionListener {
     private JButton signInButton;
     private JButton logInButton;
@@ -28,17 +28,17 @@ public class StartScreen extends JPanel implements ActionListener {
     private FinanceTracker financeTracker;
     private GridBagConstraints gbc;
     private JLabel responseLabel;
-
-    private BalanceSheet balanceSheet;
+    private UserFinancesList balanceSheet;
     private JsonReader jsonReader;
     private String jsonStore;
     private String button;
 
-
-    public StartScreen(FinanceTracker financeTracker, BalanceSheet balanceSheet) {
+    // REQUIRES: financeTracker to not be null
+    // EFFECTS: Constructs the start screen  panel with a reference to the main 
+    //          Finance Tracker application
+    public StartScreen(FinanceTracker financeTracker) {
         // init 
         this.financeTracker = financeTracker;
-        this.balanceSheet = balanceSheet;
         button = "none";
         responseLabel = null;
 
@@ -49,6 +49,8 @@ public class StartScreen extends JPanel implements ActionListener {
         initGridLayout();
     } 
 
+    // MODIFIES: this
+    // EFFECTS:  initializes all the buttons and sub panels
     private void initComponents() {
         // Panels
         buttonPanel = new JPanel(new FlowLayout());
@@ -62,9 +64,10 @@ public class StartScreen extends JPanel implements ActionListener {
 
         buttonPanel.add(signInButton);
         buttonPanel.add(logInButton);
-
     }
 
+    // MODIFIES: this
+    // EFFECTS:  initializes the grid layout between the two sub panels
     private void initGridLayout() {
         // ButtonPanel
         gbc.gridwidth = 4;
@@ -77,8 +80,10 @@ public class StartScreen extends JPanel implements ActionListener {
         add(responsePanel, gbc);
     }
 
-
     @Override
+    // MODIFIES: this
+    // EFFECTS:  performs different actions based on the source of the
+    //           ActionListener
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signInButton) {
             responsePanel.removeAll();
@@ -97,8 +102,9 @@ public class StartScreen extends JPanel implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS:  creates a new JTextfield for reponse panel above any JLabel
     private void createTextField() {
-        //create textfield
         responseField = new JTextField(10);
         responseField.setFont(new Font("Times New Roman", Font.PLAIN, 24));
         responseField.addActionListener(this);
@@ -110,8 +116,10 @@ public class StartScreen extends JPanel implements ActionListener {
         revalidate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates a new JLabel based on the response for reponse panel
+    //          below any JTextField
     private void createLabel(String response) {
-        //create textfield
         responseLabel = new JLabel(response);
         responseLabel.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         gbc.gridwidth = 4;
@@ -122,13 +130,15 @@ public class StartScreen extends JPanel implements ActionListener {
         revalidate();
     }
 
+    // MODIFIES: this
+    // EFFECTS: finds the user within the saved json files
     private void findUserInfo() {
         String userInput = responseField.getText();
         jsonStore = "./data/" + userInput + ".json";
 
         try {
             jsonReader = new JsonReader(jsonStore);
-            balanceSheet.setList(jsonReader.read());
+            balanceSheet = jsonReader.read();
             financeTracker.show("Menu");
         } catch (IOException e) {
             responsePanel.removeAll();
@@ -147,8 +157,18 @@ public class StartScreen extends JPanel implements ActionListener {
             responsePanel.removeAll();
             createLabel("Username already exists. Try again!");
         } else {
-            balanceSheet.setList(new UserFinancesList(userInput));
+            balanceSheet = new UserFinancesList(userInput);
             financeTracker.show("Menu");
         }
     }
+
+    // getters
+    public UserFinancesList getBalanceSheet() {
+        return this.balanceSheet;
+    }
+
+    public String getJsonStore() {
+        return this.jsonStore;
+    }
 }
+
