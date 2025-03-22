@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -32,7 +31,7 @@ public class AssetPanel extends JPanel implements ActionListener{
     private GridBagConstraints gbc;
     private JTextField responseField;
     private JFormattedTextField numberField;
-    private JList list;
+    private JList<String> list;
     private String[] data;
     
     private FinanceTracker financeTracker;
@@ -106,7 +105,7 @@ public class AssetPanel extends JPanel implements ActionListener{
         List<Asset> myList = balanceSheet.getAssets();
         List<String> names = new ArrayList<>();
         for (Finances f: myList) {
-            String input = String.format("%s - $%.2f", f.getName(), f.getValue());
+            String input = String.format("%s  $%.2f", f.getName(), f.getValue());
             names.add(input);
         }
         data = names.toArray(new String[0]);

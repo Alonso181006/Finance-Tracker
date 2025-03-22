@@ -38,30 +38,7 @@ public class FinanceTracker extends JFrame implements ActionListener {
         //Start Screen
         startScreenPanel = new StartScreen(this, balanceSheet);
 
-        // Create other Menu
-        menuPanel = new JPanel();
-
-        // adding component 
-        assetButton = new JButton("Assets");
-        assetButton.addActionListener(this);
-        menuPanel.add(assetButton);
-
-        liabilityButton = new JButton("Liabilities");
-        liabilityButton.addActionListener(this);
-        menuPanel.add(liabilityButton);
-
-        List<String> names = new ArrayList<>();
-        data = names.toArray(new String[0]);
-
-        list = new JList<>(data);
-        list.setVisibleRowCount(10);
-        list.setFixedCellHeight(15);
-        list.setFixedCellWidth(100);
-        menuPanel.add(list);
-
-
         mainPanel.add(startScreenPanel, "Start Screen");
-        mainPanel.add(menuPanel, "Menu");
         add(mainPanel);
 
 
@@ -80,8 +57,10 @@ public class FinanceTracker extends JFrame implements ActionListener {
     }
 
     public void show(String panel) {
+        menuPanel = new MenuPanel(this, balanceSheet);
+        mainPanel.add(menuPanel, "Menu");
+
         cardLayout.show(mainPanel, panel);
-        // updateList();
         // Panel for Assets
         assestPanel = new AssetPanel(this, balanceSheet.getList());
 
@@ -90,7 +69,7 @@ public class FinanceTracker extends JFrame implements ActionListener {
 
         mainPanel.add(assestPanel, "Assets");
         mainPanel.add(liabilityPanel, "Liabilities");
-        updateList();
+        // updateList();
     }
 
     public void updateList() {
