@@ -24,4 +24,14 @@ The finance tracker specifically will start off by collecting your data about so
 - As a user I want to be able to track monthly recurring memberships with date of renewnal.
 
 ## Instructions for End User
-- 
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by:
+     1. Logging or signing in, so you can add Finances(X) to the your balance sheet(Y)
+     2. Pressing the Asset or Liabilities Buttons in the menuPanel
+     3. Then pressing the Add Asset/Liability in the respective panels and following the instructions of providing a name and value
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by once in the menu Panel choosing either the Asset or Liability Buttons to display a subset of the Xs in Y.
+- You can generate the third  action related to the user story "adding multiple Xs to a Y" by:
+    1. Once in the menu Panel choosing either the Asset or Liability Buttons
+    2. Then pressing the remove Liability or Asset based on the panel to be able to remove specific X's from Y based on the name of the Finance.
+- You can locate my visual component by either logging in or signing in to enter the menu Panel that displays a image based on your wealth
+- You can save the state of my application by pressing the save button in the menu Panel either after logging into the application or by pressing the back buttons in the Asset or Liabilities Panels
+- You can reload the state of my application by signing in using the username you previously logged in and save as before quitting.
