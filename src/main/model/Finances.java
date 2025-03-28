@@ -20,21 +20,18 @@ public abstract class Finances implements Writable {
 
     // MODIFIES: this
     // EFFECTS: Adds the value of the finance object by the amount passed
-    public void addValue(double amount) {
-        this.value += amount;
-    }
+    protected abstract void addValue(double amount);
 
     // MODIFIES: this
     // EFFECTS: Subtracts the value of the finance object by the amount passed
-    public void subValue(double amount) {
-        this.value -= amount;
-    }
+    protected abstract void subValue(double amount);
 
     // SPECIFIES: percentage >= 0 & percentage <= 50 & year >= 0 & year =< 60
     // EFFECTS: outputs the compound interest of the asset's value based on the percentage passed
     //              an the total wait time in years. The asset compounds once per year.
     public double compoundInterest(int interest, int years) {
         double compoundedValue = getValue() * Math.pow(1 + ((double) interest / 100), years);
+        EventLog.getInstance().logEvent(new Event("Compound Interest of Finance Item calculated."));
         return compoundedValue;
     } 
 

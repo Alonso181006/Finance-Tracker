@@ -24,6 +24,7 @@ public class UserFinancesList implements Writable {
     public boolean addFinances(Finances entry) {
         if (!financesList.contains(entry)) {
             financesList.add(entry);
+            EventLog.getInstance().logEvent(new Event("Finance Item added to user's finances list."));
             return true;
         }
         return false;
@@ -33,6 +34,7 @@ public class UserFinancesList implements Writable {
     // EFFECTS: if the entry is not part of the list return false
     //          else removes the entry off the list of finances and return true,    
     public boolean removeFinances(Finances entry) {
+        EventLog.getInstance().logEvent(new Event("Finance Item was removed from user's finances list."));
         return financesList.remove(entry);
     }
 

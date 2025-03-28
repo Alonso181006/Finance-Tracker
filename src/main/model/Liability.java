@@ -13,6 +13,7 @@ public class Liability extends Finances {
     // EFFECTS: Subtracts the value of the liability object by the amount passed
     public void addValue(double amount) {
         this.value -= amount;
+        EventLog.getInstance().logEvent(new Event("Value was added to Liability."));
     }
 
     @Override
@@ -20,5 +21,6 @@ public class Liability extends Finances {
     // EFFECTS: Adds the value of the liability object by the amount passed
     public void subValue(double amount) {
         this.value += amount;
+        EventLog.getInstance().logEvent(new Event("Value was removed from Liability."));
     }
 }
