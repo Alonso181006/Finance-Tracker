@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+import model.Event;
+import model.EventLog;
 import model.Finances;
 import model.UserFinancesList;
 import persistence.JsonWriter;
@@ -106,6 +108,9 @@ public class MenuPanel extends JPanel implements ActionListener {
         } else if (e.getSource() == saveButton) {
             saveUserInfo();
         } else if (e.getSource() == quitButton) {
+            for (Event event: EventLog.getInstance()) {
+                System.out.println(event.getDescription());
+            }
             System.exit(0);
         }
     }

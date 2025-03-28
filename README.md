@@ -35,3 +35,7 @@ The finance tracker specifically will start off by collecting your data about so
 - You can locate my visual component by either logging in or signing in to enter the menu Panel that displays a image based on your wealth
 - You can save the state of my application by pressing the save button in the menu Panel either after logging into the application or by pressing the back buttons in the Asset or Liabilities Panels
 - You can reload the state of my application by signing in using the username you previously logged in and save as before quitting.
+
+### Phase 4: Task 2
+- Finance Item added to user's finances list
+- Finance Item was removed from user's finances list.

@@ -3,9 +3,13 @@ package ui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
+import model.Event;
+import model.EventLog;
 import model.UserFinancesList;
 
 // Finance Tracker Application
@@ -41,6 +45,8 @@ public class FinanceTracker extends JFrame implements ActionListener {
 
         mainPanel.add(startScreenPanel, "Start Screen");
         add(mainPanel);
+
+        addWindowListener(new WindowHandler(this));
 
         //To visualize changes
         repaint();
@@ -78,6 +84,6 @@ public class FinanceTracker extends JFrame implements ActionListener {
 
         mainPanel.add(assestPanel, "Assets");
         mainPanel.add(liabilityPanel, "Liabilities");
-    }
+    } 
 
 }
