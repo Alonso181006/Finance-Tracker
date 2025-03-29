@@ -29,7 +29,6 @@ public class StartScreen extends JPanel implements ActionListener {
     private GridBagConstraints gbc;
     private JLabel responseLabel;
     private UserFinancesList balanceSheet;
-    private JsonReader jsonReader;
     private String jsonStore;
     private String button;
 
@@ -41,6 +40,7 @@ public class StartScreen extends JPanel implements ActionListener {
         this.financeTracker = financeTracker;
         button = "none";
         responseLabel = null;
+        balanceSheet = null;
 
         setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -137,7 +137,7 @@ public class StartScreen extends JPanel implements ActionListener {
         jsonStore = "./data/" + userInput + ".json";
 
         try {
-            jsonReader = new JsonReader(jsonStore);
+            JsonReader jsonReader = new JsonReader(jsonStore);
             balanceSheet = jsonReader.read();
             financeTracker.show("Menu");
         } catch (IOException e) {

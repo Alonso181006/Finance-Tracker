@@ -37,7 +37,6 @@ public class MenuPanel extends JPanel implements ActionListener {
     private UserFinancesList balanceSheet;
     private String[] data;
     private JList<String> list;
-    private JsonWriter jsonWriter;  
     private ImageIcon richImage;
     private ImageIcon middleImage;
     private ImageIcon brokeImage;
@@ -109,7 +108,7 @@ public class MenuPanel extends JPanel implements ActionListener {
             saveUserInfo();
         } else if (e.getSource() == quitButton) {
             for (Event event: EventLog.getInstance()) {
-                System.out.println(event.getDescription());
+                System.out.println(event.toString());
             }
             System.exit(0);
         }
@@ -154,7 +153,7 @@ public class MenuPanel extends JPanel implements ActionListener {
     private void saveUserInfo() {
         try {
             UserFinancesList financesList = balanceSheet;
-            jsonWriter = new JsonWriter(jsonStore);
+            JsonWriter jsonWriter = new JsonWriter(jsonStore);
             jsonWriter.createWriter();
             jsonWriter.write(financesList);
             jsonWriter.closeWriter();

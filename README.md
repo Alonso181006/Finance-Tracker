@@ -16,8 +16,6 @@ The finance tracker specifically will start off by collecting your data about so
 - As a user, I want to save my Finance tracker under a username (if I so choose), when I select the quit option from the application menu
 - As a user, I want to be able to load up my Finance Tracker based on my username from file(if I so choose)
 
-- 
-- 
 
 ### Extra
 - As a user, I want to be able create a Monthly budget by adding categories such a Food, Transportation with an alloted  amount of money I can spend for each class.
@@ -37,5 +35,13 @@ The finance tracker specifically will start off by collecting your data about so
 - You can reload the state of my application by signing in using the username you previously logged in and save as before quitting.
 
 ### Phase 4: Task 2
-- Finance Item added to user's finances list
-- Finance Item was removed from user's finances list.
+Sat Mar 29 00:44:53 PDT 2025  
+Finance Item added to user's finances list.  
+Sat Mar 29 00:45:03 PDT 2025  
+Finance Item added to user's finances list.  
+Sat Mar 29 00:45:51 PDT 2025  
+Finance Item added to user's finances list.
+
+### Phase 4: Task 3
+I have two significant improvements for refactoring the design of my project. First, I would create an abstract class that the AssetPanel and LiabiliesPanel would extend because they have similar functions. This change would reduce coupling between the two classes and reduce redundant code. Moreover, I use many components that are initialized the same way within each class. To improve cohesion in all the panel classes and reduce coupling, I would create button and textfield classes. These two major changes within the design of my code would improve my project and make it easier to revise in the future.
+![Uml Diagram](/images/UML_Design_Diagram.jpeg)

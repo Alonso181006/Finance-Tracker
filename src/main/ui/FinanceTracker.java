@@ -3,13 +3,9 @@ package ui;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
-import model.Event;
-import model.EventLog;
 import model.UserFinancesList;
 
 // Finance Tracker Application
@@ -28,6 +24,7 @@ public class FinanceTracker extends JFrame implements ActionListener {
     //          organize the different panels
     public FinanceTracker() {
         super("Finance Tracker App");
+        balanceSheet = null;
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);

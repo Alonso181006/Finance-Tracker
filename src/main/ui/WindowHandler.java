@@ -16,7 +16,7 @@ public class WindowHandler extends WindowAdapter{
     @Override
     public void windowClosing(WindowEvent e) {
         for (Event event: EventLog.getInstance()) {
-            System.out.println(event.getDescription());
+            System.out.println(event.toString());
         }
     }
 }
