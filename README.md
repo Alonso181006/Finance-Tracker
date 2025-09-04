@@ -45,3 +45,4 @@ Finance Item added to user's finances list.
 ### Phase 4: Task 3
 I have two significant improvements for refactoring the design of my project. First, I would create an abstract class that the AssetPanel and LiabiliesPanel would extend because they have similar functions. This change would reduce coupling between the two classes and reduce redundant code. Moreover, I use many components that are initialized the same way within each class. To improve cohesion in all the panel classes and reduce coupling, I would create button and textfield classes. These two major changes within the design of my code would improve my project and make it easier to revise in the future.
 ![Uml Diagram](/images/UML_Design_Diagram.jpeg)
+
