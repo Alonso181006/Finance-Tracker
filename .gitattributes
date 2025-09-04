@@ -1,0 +1,5 @@
+# Tell GitHub Linguist to treat all .java files as Java
+*.java linguist-language=Java
+
+# Ignore HTML files so they don't dominate language stats
+*.html linguist-vendored
